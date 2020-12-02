@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Button } from "@material-ui/core";
 import { myStyles } from "./storeStyle";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import Grid from "@material-ui/core/Grid";
@@ -45,7 +44,7 @@ export default function UserStoreItem({ getData }) {
           </Grid>
           <Grid item>
             <Typography variant="subtitle1">{entry.price}</Typography>
-            <Button className={classes.button}>Purchase</Button>
+            <button className={classes.button}>Purchase</button>
           </Grid>
         </Grid>
       </Grid>

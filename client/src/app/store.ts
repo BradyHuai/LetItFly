@@ -23,10 +23,12 @@ import storage from "redux-persist/lib/storage/session";
 
 import userAuthReducer from "../features/authentication/userAuthSlice";
 import appFrameReducer from "../common/components/AppFrame/appFrameSlice";
+import onboardingReducer from "../features/Onboarding/onboardingSlice";
 
 const reducers = combineReducers({
   userAuth: userAuthReducer,
   appFrame: appFrameReducer,
+  onboarding: onboardingReducer,
 });
 
 const persistedReducer = persistReducer(

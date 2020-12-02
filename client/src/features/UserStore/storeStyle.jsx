@@ -55,7 +55,7 @@ export const myStyles = makeStyles({
     height: 32,
     width: 88,
     marginTop: 68,
-    padding: "0 30px",
+    textAlign: "left",
   },
   paper: {
     width: "600px",

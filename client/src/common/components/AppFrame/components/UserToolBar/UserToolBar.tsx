@@ -25,13 +25,17 @@ import {
   Notifications as NotificationsIcon,
   MonetizationOn as CoinIcon,
   PowerSettingsNewTwoTone as SignOutIcon,
+
+  HelpOutlineTwoTone as OnboardingIcon
+
 } from "@material-ui/icons";
 import { useStyles } from "./UserToolBar.style";
 import { formatNumber } from "../../../../util";
 import { useHistory } from "../../../../../hooks/useHistory";
 import { signOutAsync } from "../../../../../features/authentication";
+import { setOnboardingActive } from "../../../../../features/Onboarding/onboardingSlice";
 
-interface OwnProps {}
+interface OwnProps { }
 
 type Props = OwnProps;
 
@@ -67,6 +71,11 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
     dispatch(signOutAsync());
   };
 
+  const handleSwitchOnboarding = () => {
+    dispatch(setOnboardingActive());
+  };
+
+
   return (
     <div className={classes.root}>
       <div className={classes.coinsContainer}>
@@ -75,6 +84,9 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
           {formatNumber(coins!)}
         </Typography>
       </div>
+      <IconButton color="inherit" onClick={handleSwitchOnboarding}>
+        <OnboardingIcon />
+      </IconButton>
       <IconButton color="inherit">
         <Badge badgeContent={17} color="secondary">
           <NotificationsIcon />
@@ -92,8 +104,8 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
             className={classes.userProfileIcon}
           />
         ) : (
-          <AccountIcon className={classes.userProfileIcon} />
-        )}
+            <AccountIcon className={classes.userProfileIcon} />
+          )}
       </IconButton>
 
       {/*User menu*/}
