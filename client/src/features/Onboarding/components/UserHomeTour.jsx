@@ -12,22 +12,36 @@ const TOUR_STEPS = [
 ];
 
 // Tour component
-const Tour = () => {
+const UserHomeTour = () => {
   const active = useSelector((state) => state.onboarding.onboardingActive);
   return (
     <>
       <JoyRide
         steps={TOUR_STEPS}
         showSkipButton={true}
+        showProgress={true}
         locale={{
+          close: "next",
           last: "End tour",
           skip: "Close tour",
         }}
         callback={() => null}
         run={active}
+        spotlightClicks={true}
+        // styles={{
+        //   options: {
+        //     arrowColor: "#e3ffeb",
+        //     backgroundColor: "#e3ffeb",
+        //     overlayColor: "rgba(79, 26, 0, 0.4)",
+        //     primaryColor: "#000",
+        //     textColor: "#004a14",
+        //     width: 200,
+        //     zIndex: 40,
+        //   },
+        // }}
       />
     </>
   );
 };
 
-export default Tour;
+export default UserHomeTour;

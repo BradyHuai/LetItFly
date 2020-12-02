@@ -13,7 +13,7 @@ import paperCraneSpaceImage from "../../images/paper-crane-space.jpg";
 import { AnimatedImageCardButton } from "./components/AnimatedImageCardButton";
 import clsx from "clsx";
 import { useHistory } from "../../hooks/useHistory";
-import Tour from "../Onboarding/components/tour";
+import UserHomeTour from "../Onboarding/components/UserHomeTour";
 
 interface OwnProps { }
 
@@ -45,7 +45,7 @@ const UserHome: FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <Tour />
+      <UserHomeTour />
       <FeatureContainer
         fullHeight
         className={clsx(classes.root, {
