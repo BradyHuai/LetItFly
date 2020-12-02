@@ -19,21 +19,21 @@ import {
   MenuList,
   MenuItem,
   Divider,
+  Switch,
+  FormControlLabel
 } from "@material-ui/core";
 import {
   AccountCircleTwoTone as AccountIcon,
   Notifications as NotificationsIcon,
   MonetizationOn as CoinIcon,
   PowerSettingsNewTwoTone as SignOutIcon,
-
-  HelpOutlineTwoTone as OnboardingIcon
-
 } from "@material-ui/icons";
 import { useStyles } from "./UserToolBar.style";
 import { formatNumber } from "../../../../util";
 import { useHistory } from "../../../../../hooks/useHistory";
 import { signOutAsync } from "../../../../../features/authentication";
 import { setOnboardingActive } from "../../../../../features/Onboarding/onboardingSlice";
+
 
 interface OwnProps { }
 
@@ -48,6 +48,7 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
   const userMenuAnchorRef = useRef<HTMLButtonElement>(null);
   const history = useHistory();
   const dispatch = useDispatch();
+  const onboardingActive = useSelector((state: RootState) => state.onboarding.onboardingActive);
 
   const handleUserMenuToggle = () => {
     setUserMenuOpen((prevOpen: boolean) => !prevOpen);
@@ -78,15 +79,24 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
 
   return (
     <div className={classes.root}>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={onboardingActive}
+            onChange={handleSwitchOnboarding}
+            name="Tour guide"
+            color="secondary"
+          />
+        }
+        label="New User Guide"
+      />
       <div className={classes.coinsContainer}>
         <CoinIcon className={classes.coinIcon} />
         <Typography variant="subtitle1" className={classes.coinsLabel}>
           {formatNumber(coins!)}
         </Typography>
       </div>
-      <IconButton color="inherit" onClick={handleSwitchOnboarding}>
-        <OnboardingIcon />
-      </IconButton>
+
       <IconButton color="inherit">
         <Badge badgeContent={17} color="secondary">
           <NotificationsIcon />

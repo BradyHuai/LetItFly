@@ -56,7 +56,7 @@ const UserHome: FunctionComponent<Props> = (props) => {
           <Grid item md={1} />
           <Grid item md={5} sm={12} xs={12} className={classes.optionContainer}>
             <AnimatedImageCardButton
-              className={clsx(classes.imageCardButton, "animatedCard")}
+              className={clsx(classes.imageCardButton, "animatedCard", "mySpaceButton")}
               imageSrc={paperCraneSpaceImage}
               imageAlt="Girl folding a paper crane in front of a work station"
               title="Enter My Space"
@@ -68,7 +68,7 @@ const UserHome: FunctionComponent<Props> = (props) => {
           </Grid>
           <Grid item md={5} sm={12} xs={12} className={classes.optionContainer}>
             <AnimatedImageCardButton
-              className={clsx(classes.imageCardButton, "animatedCard")}
+              className={clsx(classes.imageCardButton, "animatedCard", "composeButton")}
               imageSrc={paperCraneComposeImage}
               imageAlt="Smiling boy putting a paper crane into a mailbox"
               title="Compose Paper Crane"

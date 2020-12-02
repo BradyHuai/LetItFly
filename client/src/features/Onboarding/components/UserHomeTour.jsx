@@ -5,8 +5,14 @@ import { useSelector } from "react-redux";
 // Tour steps
 const TOUR_STEPS = [
   {
-    target: ".animatedCard",
-    content: "This is the first step.",
+    target: ".mySpaceButton",
+    content:
+      "This will bring you to receive and view cranes. Let us skip this for now.",
+    disableBeacon: true,
+  },
+  {
+    target: ".composeButton",
+    content: "Click here to compose our first crane",
     disableBeacon: true,
   },
 ];
@@ -28,17 +34,17 @@ const UserHomeTour = () => {
         callback={() => null}
         run={active}
         spotlightClicks={true}
-        // styles={{
-        //   options: {
-        //     arrowColor: "#e3ffeb",
-        //     backgroundColor: "#e3ffeb",
-        //     overlayColor: "rgba(79, 26, 0, 0.4)",
-        //     primaryColor: "#000",
-        //     textColor: "#004a14",
-        //     width: 200,
-        //     zIndex: 40,
-        //   },
-        // }}
+        styles={{
+          options: {
+            arrowColor: "#e3ffeb",
+            backgroundColor: "#e3ffeb",
+            // overlayColor: "rgba(79, 26, 0, 0.4)",
+            primaryColor: "#000",
+            textColor: "#004a14",
+            width: 430,
+            zIndex: 900,
+          },
+        }}
       />
     </>
   );

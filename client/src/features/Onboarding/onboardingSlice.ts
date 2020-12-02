@@ -9,10 +9,7 @@ const onboardingSlice = createSlice({
   initialState,
   reducers: {
     setOnboardingActive: (state) => {
-      state.onboardingActive = true;
-    },
-    setOnboardingInactive: (state) => {
-      state.onboardingActive = false;
+      state.onboardingActive = !state.onboardingActive;
     },
   },
 });
