@@ -33,6 +33,7 @@ import { formatNumber } from "../../../../util";
 import { useHistory } from "../../../../../hooks/useHistory";
 import { signOutAsync } from "../../../../../features/authentication";
 import { setOnboardingActive } from "../../../../../features/Onboarding/onboardingSlice";
+import { UserRole } from "../../../../../services/serverApi";
 
 
 interface OwnProps { }
@@ -49,6 +50,9 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const onboardingActive = useSelector((state: RootState) => state.onboarding.onboardingActive);
+  const currentUserRole = useSelector(
+    (state: RootState) => state.userAuth.role
+  );
 
   const handleUserMenuToggle = () => {
     setUserMenuOpen((prevOpen: boolean) => !prevOpen);
@@ -79,17 +83,18 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
 
   return (
     <div className={classes.root}>
-      <FormControlLabel
-        control={
-          <Switch
-            checked={onboardingActive}
-            onChange={handleSwitchOnboarding}
-            name="Tour guide"
-            color="secondary"
-          />
-        }
-        label="New User Guide"
-      />
+      {currentUserRole === UserRole.user ?
+        (<FormControlLabel
+          control={
+            <Switch
+              checked={onboardingActive}
+              onChange={handleSwitchOnboarding}
+              name="Tour guide"
+              color="secondary"
+            />
+          }
+          label="Enable tour guide"
+        />) : (<></>)}
       <div className={classes.coinsContainer}>
         <CoinIcon className={classes.coinIcon} />
         <Typography variant="subtitle1" className={classes.coinsLabel}>

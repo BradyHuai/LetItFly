@@ -25,22 +25,30 @@ import userAuthReducer from "../features/authentication/userAuthSlice";
 import appFrameReducer from "../common/components/AppFrame/appFrameSlice";
 import onboardingReducer from "../features/Onboarding/onboardingSlice";
 
-const reducers = combineReducers({
-  userAuth: userAuthReducer,
-  appFrame: appFrameReducer,
-  onboarding: onboardingReducer,
-});
-
-const persistedReducer = persistReducer(
+const persistedAuthReducer = persistReducer(
   {
     key: "root",
     storage,
   },
-  reducers
+  userAuthReducer
 );
 
+const persistedAppFrameReducer = persistReducer(
+  {
+    key: "root",
+    storage,
+  },
+  appFrameReducer
+);
+
+const reducers = combineReducers({
+  userAuth: persistedAuthReducer,
+  appFrame: persistedAppFrameReducer,
+  onboarding: onboardingReducer,
+});
+
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: reducers,
   middleware: getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

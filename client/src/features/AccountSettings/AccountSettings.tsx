@@ -15,7 +15,7 @@ import { ContactInfoPanel } from "./components/tabPanels/ContactInfoPanel";
 import { ProfilePanel } from "./components/tabPanels/ProfilePanel";
 import { AuthenticationPanel } from "./components/tabPanels/AuthenticationPanel";
 
-interface OwnProps {}
+interface OwnProps { }
 
 type Props = OwnProps;
 
