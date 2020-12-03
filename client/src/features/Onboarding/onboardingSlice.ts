@@ -9,11 +9,17 @@ const onboardingSlice = createSlice({
   initialState,
   reducers: {
     setOnboardingActive: (state) => {
-      state.onboardingActive = !state.onboardingActive;
+      state.onboardingActive = true;
+    },
+    setOnboardingInactive: (state) => {
+      state.onboardingActive = false;
     },
   },
 });
 
-export const { setOnboardingActive } = onboardingSlice.actions;
+export const {
+  setOnboardingActive,
+  setOnboardingInactive,
+} = onboardingSlice.actions;
 
 export default onboardingSlice.reducer;

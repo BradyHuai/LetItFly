@@ -3,12 +3,14 @@
  * Creation Date: 2020-10-31
  * Description: Menu item for side menu.
  */
-import React, { FunctionComponent, PropsWithChildren } from "react";
+import React, { FunctionComponent, PropsWithChildren, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { SideMenuConfigEntry } from "../../../../../config";
 import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { useStyles } from "./SideMenu.style";
 import { useHistory } from "../../../../../hooks/useHistory";
+import { useDispatch } from "react-redux";
+import { setOnboardingInactive } from "../../../../../features/Onboarding/onboardingSlice";
 
 type Props = SideMenuConfigEntry;
 
@@ -29,6 +31,11 @@ const SideMenuItem: FunctionComponent<Props> = ({
   const handleMenuItemClick = (url: string) => {
     history.push(url);
   };
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setOnboardingInactive())
+  })
 
   return (
     <ListItem

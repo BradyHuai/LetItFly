@@ -19,14 +19,15 @@ import {
   MenuList,
   MenuItem,
   Divider,
-  Switch,
-  FormControlLabel
+  // Switch,
+  // FormControlLabel
 } from "@material-ui/core";
 import {
   AccountCircleTwoTone as AccountIcon,
   Notifications as NotificationsIcon,
   MonetizationOn as CoinIcon,
   PowerSettingsNewTwoTone as SignOutIcon,
+  HelpOutlineTwoTone as OnboardingIcon
 } from "@material-ui/icons";
 import { useStyles } from "./UserToolBar.style";
 import { formatNumber } from "../../../../util";
@@ -49,7 +50,7 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
   const userMenuAnchorRef = useRef<HTMLButtonElement>(null);
   const history = useHistory();
   const dispatch = useDispatch();
-  const onboardingActive = useSelector((state: RootState) => state.onboarding.onboardingActive);
+  // const onboardingActive = useSelector((state: RootState) => state.onboarding.onboardingActive);
   const currentUserRole = useSelector(
     (state: RootState) => state.userAuth.role
   );
@@ -84,17 +85,23 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
   return (
     <div className={classes.root}>
       {currentUserRole === UserRole.user ?
-        (<FormControlLabel
-          control={
-            <Switch
-              checked={onboardingActive}
-              onChange={handleSwitchOnboarding}
-              name="Tour guide"
-              color="secondary"
-            />
-          }
-          label="Enable tour guide"
-        />) : (<></>)}
+        // (<FormControlLabel
+        //   control={
+        //     <Switch
+        //       checked={onboardingActive}
+        //       onChange={handleSwitchOnboarding}
+        //       name="Tour guide"
+        //       color="secondary"
+        //     />
+        //   }
+        //   label="Enable tour guide"
+        // />) 
+        <IconButton color="inherit" onClick={handleSwitchOnboarding}>
+
+          <OnboardingIcon />
+
+        </IconButton>
+        : (<></>)}
       <div className={classes.coinsContainer}>
         <CoinIcon className={classes.coinIcon} />
         <Typography variant="subtitle1" className={classes.coinsLabel}>
