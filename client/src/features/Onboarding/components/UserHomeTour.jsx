@@ -1,28 +1,42 @@
 import React from "react";
 import JoyRide from "react-joyride";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setOnboardingInactive } from "../onboardingSlice";
 
+const INITIAL_STATE = {
+  key: new Date(),
+};
 // Tour steps
 const TOUR_STEPS = [
   {
     target: ".mySpaceButton",
-    content:
-      "This will bring you to receive and view cranes. Let us skip this for now.",
+    content: "This will bring you to receive and view cranes.",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
   {
     target: ".composeButton",
-    content: "Click here to compose our first crane",
+    content: "Click here to compose your first crane",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
 ];
 
-// Tour component
 const UserHomeTour = () => {
+  const dispatch = useDispatch();
+  const handleTourEnd = () => {
+    dispatch(setOnboardingInactive());
+  };
   const active = useSelector((state) => state.onboarding.onboardingActive);
+
+  React.useEffect(handleTourEnd, []);
+
   return (
     <>
       <JoyRide
+        {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
         showProgress={true}

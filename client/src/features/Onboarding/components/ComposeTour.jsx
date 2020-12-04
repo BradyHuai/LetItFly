@@ -1,24 +1,36 @@
 import React from "react";
 import JoyRide from "react-joyride";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setOnboardingInactive } from "../onboardingSlice";
 
 // Tour steps
 const TOUR_STEPS = [
   {
     target: ".composeTitle",
-    content: "This is the first step.",
+    content: "Input your message title here.",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
   {
     target: ".composeContent",
-    content: "This is the second step.",
+    content: "Input your message content.",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
 ];
 
 // Tour component
 const ComposeTour = () => {
+  const dispatch = useDispatch();
+  const handleTourEnd = () => {
+    dispatch(setOnboardingInactive());
+  };
   const active = useSelector((state) => state.onboarding.onboardingActive);
+
+  React.useEffect(handleTourEnd, []);
+
   return (
     <>
       <JoyRide
