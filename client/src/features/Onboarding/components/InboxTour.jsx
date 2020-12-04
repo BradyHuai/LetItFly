@@ -24,6 +24,7 @@ const TOUR_STEPS = [
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
+    hideFooter: true,
     spotlightClicks: true,
   },
   {
@@ -85,7 +86,7 @@ const InboxTour = () => {
         }}
         callback={() => null}
         run={active}
-        spotlightClicks={true}
+        continuous={true}
         styles={{
           options: {
             arrowColor: "#e3ffeb",
