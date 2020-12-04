@@ -33,11 +33,11 @@ import { useStyles } from "./UserToolBar.style";
 import { formatNumber } from "../../../../util";
 import { useHistory } from "../../../../../hooks/useHistory";
 import { signOutAsync } from "../../../../../features/authentication";
-import { setOnboardingActive } from "../../../../../features/Onboarding/onboardingSlice";
+import { setOnboardingActive, setReload } from "../../../../../features/Onboarding/onboardingSlice";
 import { UserRole } from "../../../../../services/serverApi";
 
 
-interface OwnProps { }
+interface OwnProps {}
 
 type Props = OwnProps;
 
@@ -79,6 +79,7 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
 
   const handleSwitchOnboarding = () => {
     dispatch(setOnboardingActive());
+    dispatch(setReload());
   };
 
 

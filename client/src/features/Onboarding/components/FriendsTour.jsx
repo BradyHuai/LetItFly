@@ -24,16 +24,22 @@ const TOUR_STEPS = [
 // Tour component
 const FriendsTour = () => {
   const dispatch = useDispatch();
+  const reload = useSelector((state) => state.onboarding.reload);
+  const active = useSelector((state) => state.onboarding.onboardingActive);
+  const INITIAL_STATE = { key: reload };
   const handleTourEnd = () => {
     dispatch(setOnboardingInactive());
   };
-  const active = useSelector((state) => state.onboarding.onboardingActive);
 
   React.useEffect(handleTourEnd, []);
+  React.useEffect(() => {
+    INITIAL_STATE.key = reload;
+  }, [reload, INITIAL_STATE.key]);
 
   return (
     <>
       <JoyRide
+        {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
         showProgress={true}

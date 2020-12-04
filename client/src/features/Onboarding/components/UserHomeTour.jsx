@@ -3,9 +3,6 @@ import JoyRide from "react-joyride";
 import { useSelector, useDispatch } from "react-redux";
 import { setOnboardingInactive } from "../onboardingSlice";
 
-const INITIAL_STATE = {
-  key: new Date(),
-};
 // Tour steps
 const TOUR_STEPS = [
   {
@@ -26,12 +23,17 @@ const TOUR_STEPS = [
 
 const UserHomeTour = () => {
   const dispatch = useDispatch();
+  const reload = useSelector((state) => state.onboarding.reload);
+  const active = useSelector((state) => state.onboarding.onboardingActive);
+  const INITIAL_STATE = { key: reload };
   const handleTourEnd = () => {
     dispatch(setOnboardingInactive());
   };
-  const active = useSelector((state) => state.onboarding.onboardingActive);
 
   React.useEffect(handleTourEnd, []);
+  React.useEffect(() => {
+    INITIAL_STATE.key = reload;
+  }, [reload, INITIAL_STATE.key]);
 
   return (
     <>
