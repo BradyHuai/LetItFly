@@ -18,7 +18,7 @@ const SpaceInboxPage: FunctionComponent<Props> = (props) => {
   const [list, hasMore, fetchNextData] = usePaperCraneList("received");
 
   return (
-    <FeatureContainerWithHeader headerTitle="Inbox">
+    <FeatureContainerWithHeader headerTitle="Inbox" className="inboxContent">
       <InfiniteScrollList
         hasMore={hasMore}
         loadMore={fetchNextData}
