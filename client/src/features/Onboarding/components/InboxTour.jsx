@@ -7,20 +7,38 @@ import { setOnboardingInactive } from "../onboardingSlice";
 const TOUR_STEPS = [
   {
     target: ".composeButton",
-    content:
-      "You can click here to view compose a new paper.",
+    content: "You can click here to view compose a new paper.",
     disableBeacon: true,
   },
   {
+    target: ".composeTitle",
+    content: "Input your message title here.",
+    disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
+  },
+  {
+    target: ".composeContent",
+    content: "Input your message content.",
+    disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
+  },
+  {
+    target: ".sendButton",
+    content: "Click here to send it.",
+    disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
+  },
+  {
     target: ".searchButton",
-    content:
-      "You can click here to search papers.",
+    content: "You can click here to search papers.",
     disableBeacon: true,
   },
   {
     target: ".receivebutton",
-    content:
-      "You can click here to check all received papers.",
+    content: "You can click here to check all received papers.",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
@@ -29,34 +47,29 @@ const TOUR_STEPS = [
   },
   {
     target: ".inboxContent",
-    content:
-      "The papers received will be displayed here.",
+    content: "The papers received will be displayed here.",
     disableBeacon: true,
   },
   {
     target: ".starButton",
-    content:
-      "Click here to star a paper.",
+    content: "Click here to star a paper.",
     disableBeacon: true,
   },
   {
     target: ".deleteButton",
-    content:
-      "Click here to delete a paper.",
+    content: "Click here to delete a paper.",
     disableBeacon: true,
   },
   {
     target: ".sentButton",
-    content:
-      "Click here to see papers that are sent by yourself.",
+    content: "Click here to see papers that are sent by yourself.",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".starredButton",
-    content:
-      "Click here to see the starred papers.",
+    content: "Click here to see the starred papers.",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
@@ -66,16 +79,22 @@ const TOUR_STEPS = [
 // Tour component
 const InboxTour = () => {
   const dispatch = useDispatch();
+  const reload = useSelector((state) => state.onboarding.reload);
+  const active = useSelector((state) => state.onboarding.onboardingActive);
+  const INITIAL_STATE = { key: reload };
   const handleTourEnd = () => {
     dispatch(setOnboardingInactive());
   };
-  const active = useSelector((state) => state.onboarding.onboardingActive);
 
   React.useEffect(handleTourEnd, []);
+  React.useEffect(() => {
+    INITIAL_STATE.key = reload;
+  }, [reload, INITIAL_STATE.key]);
 
   return (
     <>
       <JoyRide
+        {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
         showProgress={true}

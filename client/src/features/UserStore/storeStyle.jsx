@@ -48,14 +48,14 @@ export const myStyles = makeStyles({
     // position: "absolute",
   },
   button: {
-    background: "linear-gradient(45deg, #2979ff 30%, #2196f3 90%)",
+    background: "DodgerBlue",
     border: 0,
-    borderRadius: 10,
     color: "white",
+    borderRadius: 8,
     height: 32,
     width: 88,
     marginTop: 68,
-    textAlign: "left",
+    textAlign: "center",
   },
   paper: {
     width: "600px",

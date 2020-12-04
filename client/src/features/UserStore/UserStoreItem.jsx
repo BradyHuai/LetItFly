@@ -4,6 +4,7 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import clsx from "clsx";
 
 export default function UserStoreItem({ getData }) {
   const { useState } = React;
@@ -44,7 +45,9 @@ export default function UserStoreItem({ getData }) {
           </Grid>
           <Grid item>
             <Typography variant="subtitle1">{entry.price}</Typography>
-            <button className={classes.button}>Purchase</button>
+            <button className={clsx(classes.button, "purchaseButton")}>
+              Purchase
+            </button>
           </Grid>
         </Grid>
       </Grid>

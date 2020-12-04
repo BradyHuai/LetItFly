@@ -15,32 +15,32 @@ import clsx from "clsx";
 import { useHistory } from "../../hooks/useHistory";
 import UserHomeTour from "../Onboarding/components/UserHomeTour";
 
-interface OwnProps { }
+interface OwnProps {}
 
 type Props = OwnProps;
 
-const UserHome: FunctionComponent<Props> = (props) => {
+const UserHome: FunctionComponent<Props> = ( props ) => {
   const classes = useStyles();
   const history = useHistory();
 
   // When one image card is being hovered over, I want to fade
   // other image cards to create the visual effect.
-  const [shouldImageCardFade, setShouldImageCardFade] = useState(false);
+  const [shouldImageCardFade, setShouldImageCardFade] = useState( false );
 
   const handleImageCardMouseEnter = () => {
-    setShouldImageCardFade(true);
+    setShouldImageCardFade( true );
   };
 
   const handleImageCardMouseLeave = () => {
-    setShouldImageCardFade(false);
+    setShouldImageCardFade( false );
   };
 
   const handleEnterMySpaceClick = () => {
-    history.push("/my/space/inbox");
+    history.push( "/my/space/inbox" );
   };
 
   const handleComposeClick = () => {
-    history.push("/my/space/compose");
+    history.push( "/my/space/compose" );
   };
 
   return (
@@ -48,15 +48,15 @@ const UserHome: FunctionComponent<Props> = (props) => {
       <UserHomeTour />
       <FeatureContainer
         fullHeight
-        className={clsx(classes.root, {
+        className={clsx( classes.root, {
           [classes.rootFade]: shouldImageCardFade,
-        })}
+        } )}
       >
         <Grid container className={classes.optionsGrid} spacing={0}>
           <Grid item md={1} />
           <Grid item md={5} sm={12} xs={12} className={classes.optionContainer}>
             <AnimatedImageCardButton
-              className={clsx(classes.imageCardButton, "animatedCard", "mySpaceButton")}
+              className={clsx( classes.imageCardButton, "animatedCard", "mySpaceButton" )}
               imageSrc={paperCraneSpaceImage}
               imageAlt="Girl folding a paper crane in front of a work station"
               title="Enter My Space"
@@ -68,7 +68,7 @@ const UserHome: FunctionComponent<Props> = (props) => {
           </Grid>
           <Grid item md={5} sm={12} xs={12} className={classes.optionContainer}>
             <AnimatedImageCardButton
-              className={clsx(classes.imageCardButton, "animatedCard", "composeButton")}
+              className={clsx( classes.imageCardButton, "animatedCard", "composeButton" )}
               imageSrc={paperCraneComposeImage}
               imageAlt="Smiling boy putting a paper crane into a mailbox"
               title="Compose Paper Crane"

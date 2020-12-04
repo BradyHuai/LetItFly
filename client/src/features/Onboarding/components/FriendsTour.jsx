@@ -1,27 +1,45 @@
 import React from "react";
 import JoyRide from "react-joyride";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setOnboardingInactive } from "../onboardingSlice";
 
 // Tour steps
 const TOUR_STEPS = [
   {
-    target: ".mySpaceButton",
-    content:
-      "This will bring you to receive and view cranes. Let us skip this for now.",
+    target: ".friendInfo",
+    content: "Click on icon to view friend info.",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
   {
-    target: ".composeButton",
-    content: "Click here to compose our first crane",
+    target: ".deleteFriend",
+    content: "Click here to delete your friend, OUCH!",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
 ];
 
-const SidemenuTour = () => {
+// Tour component
+const FriendsTour = () => {
+  const dispatch = useDispatch();
+  const reload = useSelector((state) => state.onboarding.reload);
   const active = useSelector((state) => state.onboarding.onboardingActive);
+  const INITIAL_STATE = { key: reload };
+  const handleTourEnd = () => {
+    dispatch(setOnboardingInactive());
+  };
+
+  React.useEffect(handleTourEnd, []);
+  React.useEffect(() => {
+    INITIAL_STATE.key = reload;
+  }, [reload, INITIAL_STATE.key]);
+
   return (
     <>
       <JoyRide
+        {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
         showProgress={true}
@@ -48,4 +66,5 @@ const SidemenuTour = () => {
     </>
   );
 };
-export default SidemenuTour;
+
+export default FriendsTour;

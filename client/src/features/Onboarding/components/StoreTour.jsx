@@ -6,15 +6,8 @@ import { setOnboardingInactive } from "../onboardingSlice";
 // Tour steps
 const TOUR_STEPS = [
   {
-    target: ".composeTitle",
-    content: "Input your message title here.",
-    disableBeacon: true,
-    disableOverlayClose: true,
-    hideCloseButton: true,
-  },
-  {
-    target: ".composeContent",
-    content: "Input your message content.",
+    target: ".purchaseButton",
+    content: "Buy a new look for your crane. Don't over spend!",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
@@ -22,18 +15,24 @@ const TOUR_STEPS = [
 ];
 
 // Tour component
-const ComposeTour = () => {
+const StoreTour = () => {
   const dispatch = useDispatch();
+  const reload = useSelector((state) => state.onboarding.reload);
+  const active = useSelector((state) => state.onboarding.onboardingActive);
+  const INITIAL_STATE = { key: reload };
   const handleTourEnd = () => {
     dispatch(setOnboardingInactive());
   };
-  const active = useSelector((state) => state.onboarding.onboardingActive);
 
   React.useEffect(handleTourEnd, []);
+  React.useEffect(() => {
+    INITIAL_STATE.key = reload;
+  }, [reload, INITIAL_STATE.key]);
 
   return (
     <>
       <JoyRide
+        {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
         showProgress={true}
@@ -45,20 +44,20 @@ const ComposeTour = () => {
         callback={() => null}
         run={active}
         spotlightClicks={true}
-        // styles={{
-        //   options: {
-        //     arrowColor: "#e3ffeb",
-        //     backgroundColor: "#e3ffeb",
-        //     overlayColor: "rgba(79, 26, 0, 0.4)",
-        //     primaryColor: "#000",
-        //     textColor: "#004a14",
-        //     width: 200,
-        //     zIndex: 40,
-        //   },
-        // }}
+        styles={{
+          options: {
+            arrowColor: "#e3ffeb",
+            backgroundColor: "#e3ffeb",
+            // overlayColor: "rgba(79, 26, 0, 0.4)",
+            primaryColor: "#000",
+            textColor: "#004a14",
+            width: 430,
+            zIndex: 900,
+          },
+        }}
       />
     </>
   );
 };
 
-export default ComposeTour;
+export default StoreTour;
