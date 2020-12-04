@@ -1,24 +1,36 @@
 import React from "react";
 import JoyRide from "react-joyride";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setOnboardingInactive } from "../onboardingSlice";
 
 // Tour steps
 const TOUR_STEPS = [
   {
-    target: ".mySpaceButton",
-    content:
-      "This will bring you to receive and view cranes. Let us skip this for now.",
+    target: ".friendInfo",
+    content: "Click on icon to view friend info.",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
   {
-    target: ".composeButton",
-    content: "Click here to compose our first crane",
+    target: ".deleteFriend",
+    content: "Click here to delete your friend, OUCH!",
     disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
   },
 ];
 
-const SidemenuTour = () => {
+// Tour component
+const FriendsTour = () => {
+  const dispatch = useDispatch();
+  const handleTourEnd = () => {
+    dispatch(setOnboardingInactive());
+  };
   const active = useSelector((state) => state.onboarding.onboardingActive);
+
+  React.useEffect(handleTourEnd, []);
+
   return (
     <>
       <JoyRide
@@ -48,4 +60,5 @@ const SidemenuTour = () => {
     </>
   );
 };
-export default SidemenuTour;
+
+export default FriendsTour;

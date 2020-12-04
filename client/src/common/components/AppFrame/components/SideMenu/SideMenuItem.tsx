@@ -12,22 +12,22 @@ import { useHistory } from "../../../../../hooks/useHistory";
 
 type Props = SideMenuConfigEntry;
 
-const SideMenuItem: FunctionComponent<Props> = ({
+const SideMenuItem: FunctionComponent<Props> = ( {
   name,
   url,
   Icon,
   size,
   highlightExact,
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<Props> ) => {
   const classes = useStyles();
-  const match = useRouteMatch({
+  const match = useRouteMatch( {
     path: url,
     exact: highlightExact,
-  });
+  } );
   const history = useHistory();
 
-  const handleMenuItemClick = (url: string) => {
-    history.push(url);
+  const handleMenuItemClick = ( url: string ) => {
+    history.push( url );
   };
 
   return (
@@ -35,7 +35,7 @@ const SideMenuItem: FunctionComponent<Props> = ({
       button
       selected={!!match}
       className={classes.menuItem}
-      onClick={() => handleMenuItemClick(url)}
+      onClick={() => handleMenuItemClick( url )}
     >
       <ListItemIcon>
         <Icon style={{ fontSize: size }} />

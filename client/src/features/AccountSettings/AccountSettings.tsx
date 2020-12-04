@@ -14,6 +14,7 @@ import { Container } from "@material-ui/core";
 import { ContactInfoPanel } from "./components/tabPanels/ContactInfoPanel";
 import { ProfilePanel } from "./components/tabPanels/ProfilePanel";
 import { AuthenticationPanel } from "./components/tabPanels/AuthenticationPanel";
+import AccountSettingsTour from "../Onboarding/components/AccountSettingsTour";
 
 interface OwnProps { }
 
@@ -43,7 +44,8 @@ const AccountSettings: FunctionComponent<Props> = (props) => {
     setDisplayId(nextIndex);
   };
 
-  return (
+  return (<>
+    <AccountSettingsTour />
     <FeatureContainer fullHeight className={classes.root}>
       <Container>
         <AvatarButton className={classes.avatarButton} avatarSrc="" />
@@ -74,7 +76,9 @@ const AccountSettings: FunctionComponent<Props> = (props) => {
         </TabsContainer>
       </Container>
     </FeatureContainer>
+  </>
   );
+
 };
 
 export { AccountSettings };

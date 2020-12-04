@@ -11,11 +11,11 @@ import clsx from "clsx";
 import ComposeTour from "../../Onboarding/components/ComposeTour";
 
 
-interface OwnProps { }
+interface OwnProps {}
 
 type Props = OwnProps;
 
-const PaperCraneCompose: FunctionComponent<Props> = (props) => {
+const PaperCraneCompose: FunctionComponent<Props> = ( props ) => {
   const classes = useStyles();
   return (
     <>
@@ -25,14 +25,14 @@ const PaperCraneCompose: FunctionComponent<Props> = (props) => {
           <TextField
             label="Title"
             variant="outlined"
-            className={clsx(classes.formField, "composeTitle")}
+            className={clsx( classes.formField, "composeTitle" )}
             required
             fullWidth
           />
           <TextField
             label="Content"
             variant="outlined"
-            className={clsx(classes.formField, "composeContent")}
+            className={clsx( classes.formField, "composeContent" )}
             required
             fullWidth
             multiline

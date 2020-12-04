@@ -6,22 +6,43 @@ import { setOnboardingInactive } from "../onboardingSlice";
 // Tour steps
 const TOUR_STEPS = [
   {
-    target: ".composeTitle",
-    content: "Input your message title here.",
+    target: ".panel0",
+    content: "Click here to update personal info.",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
-    target: ".composeContent",
-    content: "Input your message content.",
+    target: ".inputBoxes0",
+    content: "Fill in desired changes.",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".sendButton",
-    content: "Click here to send it.",
+    content: "Once satisfied, click here to sumbit.",
+    disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
+  },
+  {
+    target: ".panel1",
+    content: "Similarly, click here to update contact info.",
+    disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
+  },
+  {
+    target: ".panel2",
+    content: "Click here to update profile.",
+    disableBeacon: true,
+    disableOverlayClose: true,
+    hideCloseButton: true,
+  },
+  {
+    target: ".panel3",
+    content: "Click here to update authentication info.",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
@@ -29,7 +50,7 @@ const TOUR_STEPS = [
 ];
 
 // Tour component
-const ComposeTour = () => {
+const AccountSettingsTour = () => {
   const dispatch = useDispatch();
   const handleTourEnd = () => {
     dispatch(setOnboardingInactive());
@@ -68,4 +89,4 @@ const ComposeTour = () => {
   );
 };
 
-export default ComposeTour;
+export default AccountSettingsTour;

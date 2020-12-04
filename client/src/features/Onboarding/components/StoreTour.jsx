@@ -6,22 +6,8 @@ import { setOnboardingInactive } from "../onboardingSlice";
 // Tour steps
 const TOUR_STEPS = [
   {
-    target: ".composeTitle",
-    content: "Input your message title here.",
-    disableBeacon: true,
-    disableOverlayClose: true,
-    hideCloseButton: true,
-  },
-  {
-    target: ".composeContent",
-    content: "Input your message content.",
-    disableBeacon: true,
-    disableOverlayClose: true,
-    hideCloseButton: true,
-  },
-  {
-    target: ".sendButton",
-    content: "Click here to send it.",
+    target: ".purchaseButton",
+    content: "Buy a new look for your crane. Don't over spend!",
     disableBeacon: true,
     disableOverlayClose: true,
     hideCloseButton: true,
@@ -29,7 +15,7 @@ const TOUR_STEPS = [
 ];
 
 // Tour component
-const ComposeTour = () => {
+const StoreTour = () => {
   const dispatch = useDispatch();
   const handleTourEnd = () => {
     dispatch(setOnboardingInactive());
@@ -68,4 +54,4 @@ const ComposeTour = () => {
   );
 };
 
-export default ComposeTour;
+export default StoreTour;

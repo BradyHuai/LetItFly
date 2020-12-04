@@ -18,32 +18,36 @@ import {
   Delete as DeleteIcon,
 } from "@material-ui/icons";
 import { useStyles } from "./UserFriendPage.style";
+import FriendsTour from "../Onboarding/components/FriendsTour";
 
 interface OwnProps {}
 
 type Props = OwnProps;
 
-const UserFriendsPage: FunctionComponent<Props> = (props) => {
+const UserFriendsPage: FunctionComponent<Props> = ( props ) => {
   const classes = useStyles();
 
   return (
-    <FeatureContainerWithHeader headerTitle="Friends" className={classes.root}>
-      <InfiniteScrollList hasMore={false} loadMore={() => {}}>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar>
-              <FriendIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Friend" />
-          <ListItemSecondaryAction>
-            <IconButton edge="end">
-              <DeleteIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      </InfiniteScrollList>
-    </FeatureContainerWithHeader>
+    <>
+      <FriendsTour />
+      <FeatureContainerWithHeader headerTitle="Friends" className={classes.root}>
+        <InfiniteScrollList hasMore={false} loadMore={() => {}}>
+          <ListItem button>
+            <ListItemAvatar >
+              <Avatar>
+                <FriendIcon className={"friendInfo"} />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Friend" />
+            <ListItemSecondaryAction>
+              <IconButton edge="end">
+                <DeleteIcon className={"deleteFriend"} />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+        </InfiniteScrollList>
+      </FeatureContainerWithHeader>
+    </>
   );
 };
 
