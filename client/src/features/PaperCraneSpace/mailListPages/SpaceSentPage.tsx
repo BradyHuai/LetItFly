@@ -17,7 +17,7 @@ const SpaceSentPage: FunctionComponent<Props> = (props) => {
   const [list, hasMore, fetchNextData] = usePaperCraneList("sent");
 
   return (
-    <FeatureContainerWithHeader headerTitle="Sent">
+    <FeatureContainerWithHeader headerTitle="Sent" className="sentContent" >
       <InfiniteScrollList
         hasMore={hasMore}
         loadMore={fetchNextData}

@@ -42,10 +42,10 @@ const EmailStyledListItem: FunctionComponent<Props> = ({
       </ListItemAvatar>
       <ListItemText primary={title} />
       <ListItemSecondaryAction>
-        <IconButton edge="end" onClick={handleDeleteClick} className="deleteButton">
+        <IconButton edge="end" onClick={handleDeleteClick} className="starButton">
           <StarIcon />
         </IconButton>
-        <IconButton edge="end" onClick={handleStarClick} className="starButton">
+        <IconButton edge="end" onClick={handleStarClick} className="deleteButton">
           <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>

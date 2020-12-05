@@ -42,7 +42,7 @@ const FriendsTour = () => {
         {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
-        showProgress={true}
+        continuous={true}
         locale={{
           close: "next",
           last: "End tour",

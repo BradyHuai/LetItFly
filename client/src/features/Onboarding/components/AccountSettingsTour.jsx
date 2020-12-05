@@ -19,7 +19,6 @@ const TOUR_STEPS = [
     disableOverlayClose: true,
     hideCloseButton: true,
   },
-
   {
     target: ".panel1",
     content: "Similarly, click here to update contact info.",
@@ -92,7 +91,7 @@ const AccountSettingsTour = () => {
         {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
-        showProgress={true}
+        continuous={true}
         locale={{
           close: "next",
           last: "End tour",

@@ -9,14 +9,12 @@ const TOUR_STEPS = [
     target: ".mySpaceButton",
     content: "This will bring you to receive and view cranes.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".composeButton",
     content: "Click here to compose your first crane",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
 ];
@@ -41,7 +39,8 @@ const UserHomeTour = () => {
         {...INITIAL_STATE}
         steps={TOUR_STEPS}
         showSkipButton={true}
-        showProgress={true}
+        continuous={true}
+        disableOverlayClose={true}
         locale={{
           close: "next",
           last: "End tour",

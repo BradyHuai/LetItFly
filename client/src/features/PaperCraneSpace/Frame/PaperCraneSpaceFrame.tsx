@@ -21,7 +21,7 @@ import { blueTheme, redTheme } from "./components/list/list.style";
 import { ListIconItem } from "./components/list/ListIconItem";
 import { useHistory } from "../../../hooks/useHistory";
 import clsx from "clsx";
-import InboxTour from "../../Onboarding/components/InboxTour"
+import InboxComposeTour from "../../Onboarding/components/InboxComposeTour"
 
 interface OwnProps {
   routes?: RouteEntry[];
@@ -42,7 +42,7 @@ const PaperCraneSpaceFrame: FunctionComponent<Props> = ({
 
   return (
     <div className={classes.root}>
-      <InboxTour />
+      <InboxComposeTour />
       <List className={classes.list}>
         <ListButtonWithTheme
           onClick={() => navigateToLocation("/my/space/compose")}
