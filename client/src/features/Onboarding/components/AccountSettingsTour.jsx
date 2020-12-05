@@ -9,63 +9,54 @@ const TOUR_STEPS = [
     target: ".panel0",
     content: "Click here to update personal info.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".inputBoxes0",
     content: "Fill in desired changes.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".panel1",
     content: "Similarly, click here to update contact info.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".inputBoxes1",
     content: "Fill in desired changes.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".panel2",
     content: "Click here to update profile.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".inputBoxes2",
     content: "Fill in desired changes.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".panel3",
     content: "Click here to update authentication info.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".inputBoxes3",
     content: "Fill in desired changes.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
   {
     target: ".sendButton",
     content: "Once satisfied, click here to sumbit.",
     disableBeacon: true,
-    disableOverlayClose: true,
     hideCloseButton: true,
   },
 ];
@@ -100,6 +91,7 @@ const AccountSettingsTour = () => {
         callback={() => null}
         run={active}
         spotlightClicks={true}
+        disableOverlayClose={true}
         styles={{
           options: {
             arrowColor: "#e3ffeb",

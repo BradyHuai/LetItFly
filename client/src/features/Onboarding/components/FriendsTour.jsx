@@ -51,6 +51,7 @@ const FriendsTour = () => {
         callback={() => null}
         run={active}
         spotlightClicks={true}
+        disableOverlayClose={true}
         styles={{
           options: {
             arrowColor: "#e3ffeb",
