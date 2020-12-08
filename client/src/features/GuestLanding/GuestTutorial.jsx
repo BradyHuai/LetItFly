@@ -1,10 +1,10 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { AuthPageContainer } from "../authentication/components/AuthPageContainer";
-import { GrayOutArea } from "../authentication/components/GridImageCard";
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import Carousel from "react-bootstrap/Carousel";
+import { useHistory } from "../../hooks/useHistory";
 import red from "../../images/red.png";
 import blue from "../../images/blue.png";
 import tiga from "../../images/tiga.png";
@@ -23,10 +23,19 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#ffffff",
         borderRadius: 12,
     },
+    button: {
+        margin: theme.spacing(1),
+        float: "right",
+    }
 }));
 
 export default function GuestTutorial() {
     const classes = useStyles();
+    const history = useHistory();
+
+    const handleSubmit = (e) => {
+        history.push("/my");
+    }
 
     return(
         <CssBaseline>
@@ -58,6 +67,24 @@ export default function GuestTutorial() {
                     </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
+       
+            <div>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    onClick={handleSubmit}
+                    >
+                    FINISH
+                </Button>
+                <Button
+                    color="secondary"
+                    className={classes.button}
+                    onClick={handleSubmit}
+                    >
+                    SKIP
+                </Button>
+            </div>
         </Paper>
         </CssBaseline>
         
