@@ -4,21 +4,22 @@ import { Grid, TextField } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { AuthPageContainer } from "../authentication/components/AuthPageContainer";
+import { GrayOutArea } from "../authentication/components/GridImageCard";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-    //   marginTop: ,
-    //   marginLeft: ,
-    //   marginBottom: ,
+    nameForm: {
+      marginLeft: "auto",
+      marginRight: "auto",
       height: "100%",
-      width: "70%",
-    //   textAlign: "left",
+      width: "100%",
     },
     title: {
 
     },
     button: {
-
+        margin: theme.spacing(1),
+        float: "right",
     }
 }));
 
@@ -45,9 +46,10 @@ export default function GuestPage() {
     }
 
     return(
-        <div className={classes.root}>
-            <CssBaseline>
-                <Typography className={classes.title}>PLEASE ENTER YOUR REAL NAME:</Typography>
+        <CssBaseline>
+        <AuthPageContainer grayOutArea={GrayOutArea.left}>
+            <form autoComplete="off" className={classes.nameForm}>
+                <Typography className={classes.title} variant="h6" >PLEASE ENTER YOUR REAL NAME:</Typography>
                 <Grid container spacing={3}>
                     <Grid item md={6} sm={12} xs={12}>
                         <TextField
@@ -74,13 +76,15 @@ export default function GuestPage() {
                 {/* tour */}
                 <Button
                     variant="contained"
+                    color="primary"
                     className={classes.button}
                     onClick={handleSubmit}
                     >
                     EXPLORE
                 </Button>
-            </CssBaseline>
-        </div>
+            </form>
+        </AuthPageContainer>
+        </CssBaseline>
         
     );
 }

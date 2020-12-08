@@ -1,1 +1,1 @@
-export * from "./GuestInfoPage";
+export { default as GuestInfoPage } from "./GuestInfoPage";
