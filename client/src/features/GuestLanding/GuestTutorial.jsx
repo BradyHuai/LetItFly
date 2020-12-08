@@ -5,9 +5,12 @@ import { Paper } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { useHistory } from "../../hooks/useHistory";
-import red from "../../images/red.png";
-import blue from "../../images/blue.png";
-import tiga from "../../images/tiga.png";
+import pic1 from "../../images/home-screen.png";
+import pic2 from "../../images/home-inbox.png";
+import pic3 from "../../images/inbox-screen.png";
+import pic4 from "../../images/home-compose.png";
+import pic5 from "../../images/compose-screen.png";
+import pic6 from "../../images/helper.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
         padding: 20,
         backgroundColor: "#ffffff",
         borderRadius: 12,
+        width: "80vw",
+        height: "80vh",
     },
     button: {
         margin: theme.spacing(1),
@@ -42,29 +47,33 @@ export default function GuestTutorial() {
         <Paper className={classes.root}>
         <Carousel className={classes.carousel}>
                     <Carousel.Item>
-                    <img className="d-block w-100" src={tiga} alt="First slide" />
+                    <img className="d-block w-100" src={pic1} alt="First slide" />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>This is the home page you will see.</h3>
                     </Carousel.Caption>
                     </Carousel.Item>
-                    <Carousel.Item>
-                    <img className="d-block w-100" src={red} alt="Third slide" />
 
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
+                    <Carousel.Item>
+                    <img className="d-block w-100" src={pic2} alt="Third slide" />
                     </Carousel.Item>
-                    <Carousel.Item>
-                    <img className="d-block w-100" src={blue} alt="Third slide" />
 
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </Carousel.Caption>
+                    <Carousel.Item>
+                    <img className="d-block w-100" src={pic3} alt="Third slide" />
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                    <img className="d-block w-100" src={pic4} alt="Third slide" />
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                    <img className="d-block w-100" src={pic5} alt="Third slide" />
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                    <img className="d-block w-100" src={pic6} alt="Third slide" />
+                    {/* <Carousel.Caption>
+                        <h3>Helper Button</h3>
+                    </Carousel.Caption> */}
                     </Carousel.Item>
                 </Carousel>
        
