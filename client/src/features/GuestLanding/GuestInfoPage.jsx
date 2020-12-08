@@ -6,10 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { AuthPageContainer } from "../authentication/components/AuthPageContainer";
 import { GrayOutArea } from "../authentication/components/GridImageCard";
-import Carousel from "react-bootstrap/Carousel";
-import red from "../../images/red.png";
-import blue from "../../images/blue.png";
-import tiga from "../../images/tiga.png";
+import { useHistory } from "../../hooks/useHistory";
 
 const useStyles = makeStyles((theme) => ({
     nameForm: {
@@ -29,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GuestPage() {
     const classes = useStyles();
+    const history = useHistory();
 
     const [name, setname] = useState({fname: "", lname: ""})
 
@@ -45,7 +43,7 @@ export default function GuestPage() {
             alert("Invalid name");
         }
         else {
-
+            history.push("/guesttut");
         }
     }
 
@@ -87,35 +85,6 @@ export default function GuestPage() {
                     EXPLORE
                 </Button>
             </form>
-            <div style={{ width: 1000, height: 200 }}>
-                <Carousel>
-                    <Carousel.Item>
-                    <img className="d-block w-100" src={tiga} alt="First slide" />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                    <img className="d-block w-100" src={red} alt="Third slide" />
-
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                    <img className="d-block w-100" src={blue} alt="Third slide" />
-
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
-            </div>
         </AuthPageContainer>
         </CssBaseline>
         

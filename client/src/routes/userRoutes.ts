@@ -19,6 +19,7 @@ import {
   UserHome,
   UserStore,
   GuestInfoPage,
+  GuestTutorial,
 } from "../features";
 
 import {
@@ -34,6 +35,11 @@ export const userRoutes: RouteEntry[] = [
   {
     path: "/guest",
     Component: GuestInfoPage,
+    exact: true,
+  },
+  {
+    path: "/guesttut",
+    Component: GuestTutorial,
     exact: true,
   },
   {
