@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "100vw",
     height: "100vh",
-    backgroundColor: "CornflowerBlue",
+    backgroundColor: "#757de8",
   },
   carousel: {
     backgroundColor: "#ffffff",
