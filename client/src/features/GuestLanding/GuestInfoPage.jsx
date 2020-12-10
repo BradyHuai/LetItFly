@@ -9,84 +9,82 @@ import { GrayOutArea } from "../authentication/components/GridImageCard";
 import { useHistory } from "../../hooks/useHistory";
 
 const useStyles = makeStyles((theme) => ({
-    nameForm: {
-      marginLeft: "auto",
-      marginRight: "auto",
-      height: "100%",
-      width: "100%",
-    },
-    title: {
-
-    },
-    button: {
-        margin: theme.spacing(1),
-        float: "right",
-    }
+  nameForm: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    height: "100%",
+    width: "100%",
+  },
+  title: {},
+  button: {
+    margin: theme.spacing(1),
+    float: "right",
+  },
 }));
 
 export default function GuestPage() {
-    const classes = useStyles();
-    const history = useHistory();
+  const classes = useStyles();
+  const history = useHistory();
 
-    const [name, setname] = useState({fname: "", lname: ""})
+  const [name, setname] = useState({ fname: "", lname: "" });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setname((previousData) => ({
-          ...previousData,
-          [name]: value,
-        }));
-      };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setname((previousData) => ({
+      ...previousData,
+      [name]: value,
+    }));
+  };
 
-    const handleSubmit = (e) => {
-        if (name.fname === "" || name.lname === ""){
-            alert("Invalid name");
-        }
-        else {
-            history.push("/guesttut");
-        }
+  const handleSubmit = (e) => {
+    if (name.fname === "" || name.lname === "") {
+      alert("Invalid name");
+    } else {
+      history.push("/guesttut");
     }
+  };
 
-    return(
-        <CssBaseline>
-        <AuthPageContainer grayOutArea={GrayOutArea.left}>
-            <form autoComplete="off" className={classes.nameForm}>
-                <Typography className={classes.title} variant="h6" >PLEASE ENTER YOUR REAL NAME:</Typography>
-                <Grid container spacing={3}>
-                    <Grid item md={6} sm={12} xs={12}>
-                        <TextField
-                        name="fname"
-                        label="First name"
-                        variant="outlined"
-                        onChange={handleChange}
-                        fullWidth
-                        required
-                        />
-                    </Grid>
-                    <Grid item md={6} sm={12} xs={12}>
-                        <TextField
-                        className={classes.textfield}
-                        name="lname"
-                        label="Last name"
-                        variant="outlined"
-                        onChange={handleChange}
-                        fullWidth
-                        required
-                        />
-                    </Grid>
-                </Grid>
-                {/* tour */}
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    onClick={handleSubmit}
-                    >
-                    EXPLORE
-                </Button>
-            </form>
-        </AuthPageContainer>
-        </CssBaseline>
-        
-    );
+  return (
+    <CssBaseline>
+      <AuthPageContainer grayOutArea={GrayOutArea.left}>
+        <form autoComplete="off" className={classes.nameForm}>
+          <Typography className={classes.title} variant="h6">
+            PLEASE ENTER YOUR REAL NAME:
+          </Typography>
+          <Grid container spacing={3}>
+            <Grid item md={6} sm={12} xs={12}>
+              <TextField
+                name="fname"
+                label="First name"
+                variant="outlined"
+                onChange={handleChange}
+                fullWidth
+                required
+              />
+            </Grid>
+            <Grid item md={6} sm={12} xs={12}>
+              <TextField
+                className={classes.textfield}
+                name="lname"
+                label="Last name"
+                variant="outlined"
+                onChange={handleChange}
+                fullWidth
+                required
+              />
+            </Grid>
+          </Grid>
+          {/* tour */}
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={handleSubmit}
+          >
+            EXPLORE
+          </Button>
+        </form>
+      </AuthPageContainer>
+    </CssBaseline>
+  );
 }
