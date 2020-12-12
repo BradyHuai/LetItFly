@@ -21,28 +21,52 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage/session";
 
+import onboardingReducer from "../features/Onboarding/onboardingSlice";
 import userAuthReducer from "./redux/userAuthSlice";
 import userProfileReducer from "./redux/userProfileSlice";
 import userPropertyReducer from "./redux/userPropertySlice";
 import appFrameReducer from "./redux/appFrameSlice";
 
-const reducers = combineReducers({
-  userAuth: userAuthReducer,
-  userProfile: userProfileReducer,
-  userProperty: userPropertyReducer,
-  appFrame: appFrameReducer,
-});
-
-const persistedReducer = persistReducer(
+const persistedAuthReducer = persistReducer(
   {
     key: "root",
     storage,
   },
-  reducers
+  userAuthReducer
+);
+const persistedProfileReducer = persistReducer(
+  {
+    key: "root",
+    storage,
+  },
+  userProfileReducer
+);
+const persistedPropertyReducer = persistReducer(
+  {
+    key: "root",
+    storage,
+  },
+  userPropertyReducer
 );
 
+const persistedAppFrameReducer = persistReducer(
+  {
+    key: "root",
+    storage,
+  },
+  appFrameReducer
+);
+
+const reducers = combineReducers({
+  userAuth: persistedAuthReducer,
+  appFrame: persistedAppFrameReducer,
+  userProfile: persistedProfileReducer,
+  userProperty: persistedPropertyReducer,
+  onboarding: onboardingReducer,
+});
+
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: reducers,
   middleware: getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

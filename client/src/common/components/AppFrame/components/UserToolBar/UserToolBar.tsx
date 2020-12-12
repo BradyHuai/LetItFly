@@ -6,7 +6,8 @@
  *    notifications icon button.
  */
 import React, { FunctionComponent, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../../app/store";
 import {
   Badge,
   IconButton,
@@ -16,15 +17,21 @@ import {
   MenuList,
   MenuItem,
   Divider,
+  // Switch,
+  // FormControlLabel
 } from "@material-ui/core";
 import {
   AccountCircleTwoTone as AccountIcon,
   Notifications as NotificationsIcon,
   PowerSettingsNewTwoTone as SignOutIcon,
+  HelpOutlineTwoTone as OnboardingIcon
 } from "@material-ui/icons";
 import { useStyles } from "./UserToolBar.style";
 import { useHistory } from "../../../../../hooks/useHistory";
 import { signOutAsync } from "../../../../../features/authentication";
+import { setOnboardingActive, setReload } from "../../../../../features/Onboarding/onboardingSlice";
+import { UserRole } from "../../../../../services/serverApi";
+
 import { CoinsContainer } from "./CoinsContainer";
 import { AvatarButton } from "./AvatarButton";
 
@@ -38,6 +45,10 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
   const menuRef = useRef<HTMLButtonElement>(null);
   const history = useHistory();
   const dispatch = useDispatch();
+  // const onboardingActive = useSelector((state: RootState) => state.onboarding.onboardingActive);
+  const currentUserRole = useSelector(
+    (state: RootState) => state.userAuth.role
+  );
 
   const handleUserMenuToggle = () => {
     setUserMenuOpen((prevOpen: boolean) => !prevOpen);
@@ -61,8 +72,22 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
     dispatch(signOutAsync());
   };
 
+  const handleSwitchOnboarding = () => {
+    dispatch(setOnboardingActive());
+    dispatch(setReload());
+  };
+
+
   return (
     <div className={classes.root}>
+      {currentUserRole === UserRole.user ?
+        <IconButton color="inherit" onClick={handleSwitchOnboarding}>
+
+          <OnboardingIcon />
+
+        </IconButton>
+        : (<></>)}
+
       <CoinsContainer />
       <IconButton color="inherit">
         <Badge badgeContent={17} color="secondary">

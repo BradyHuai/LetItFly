@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "./UserExpandable";
-import axios from "../../services/axios";
+import {axios} from "../../services";
 
 const loadUserTable = () => {
   return axios.get("/api/profiles").then((res) => {

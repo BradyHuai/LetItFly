@@ -8,6 +8,7 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
+      zIndex: 1,
     },
     navBarIconButton: {
       marginRight: theme.spacing(2),

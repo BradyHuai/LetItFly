@@ -18,27 +18,27 @@ interface OwnProps {
    * Index of the currently selected tab
    */
   selectedIndex: number;
-  onTabChange?: (event: ChangeEvent<{}>, nextIndex: number) => void;
+  onTabChange?: ( event: ChangeEvent<{}>, nextIndex: number ) => void;
   className?: string;
 }
 
 type Props = OwnProps;
 
-const TabsContainer: FunctionComponent<Props> = ({
+const TabsContainer: FunctionComponent<Props> = ( {
   tabLabels,
   selectedIndex,
   onTabChange,
   children,
   className,
   ...otherProps
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<Props> ) => {
   const classes = useStyles();
 
   return (
     <Paper
       elevation={0}
       square
-      className={clsx(classes.root, className)}
+      className={clsx( classes.root, className )}
       {...otherProps}
     >
       <Tabs
@@ -52,14 +52,14 @@ const TabsContainer: FunctionComponent<Props> = ({
           indicator: classes.indicator,
         }}
       >
-        {tabLabels.map((tabLabel: string, index: number) => (
+        {tabLabels.map( ( tabLabel: string, index: number ) => (
           <Tab
-            className={classes.tab}
+            className={clsx( classes.tab, `panel${index}` )}
             label={tabLabel}
             value={index}
             key={tabLabel}
           />
-        ))}
+        ) )}
       </Tabs>
       {children}
     </Paper>

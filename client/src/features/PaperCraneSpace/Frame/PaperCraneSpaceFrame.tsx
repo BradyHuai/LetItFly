@@ -20,6 +20,8 @@ import { ListButtonWithTheme } from "./components/list/ListButtonWithTheme";
 import { blueTheme, redTheme } from "./components/list/list.style";
 import { ListIconItem } from "./components/list/ListIconItem";
 import { useHistory } from "../../../hooks/useHistory";
+import clsx from "clsx";
+import InboxComposeTour from "../../Onboarding/components/InboxComposeTour"
 
 interface OwnProps {
   routes?: RouteEntry[];
@@ -40,21 +42,23 @@ const PaperCraneSpaceFrame: FunctionComponent<Props> = ({
 
   return (
     <div className={classes.root}>
+      <InboxComposeTour />
       <List className={classes.list}>
         <ListButtonWithTheme
           onClick={() => navigateToLocation("/my/space/compose")}
           theme={redTheme}
-          className={classes.listItem}
+          className={clsx(classes.listItem, "composeButton")}
         >
           Compose
         </ListButtonWithTheme>
-        <ListButtonWithTheme theme={blueTheme} className={classes.listItem}>
+        <ListButtonWithTheme theme={blueTheme} className={clsx(classes.listItem, "searchButton")}>
           Search
         </ListButtonWithTheme>
         <ListIconItem
           onClick={() => navigateToLocation("/my/space/inbox")}
           text="Received"
           icon={<InboxIcon />}
+          className="receivebutton"
         />
         <ListIconItem
           onClick={() => navigateToLocation("/my/space/unread")}
@@ -65,11 +69,13 @@ const PaperCraneSpaceFrame: FunctionComponent<Props> = ({
           onClick={() => navigateToLocation("/my/space/sent")}
           text="Sent"
           icon={<SendIcon />}
+          className="sentButton"
         />
         <ListIconItem
           onClick={() => navigateToLocation("/my/space/starred")}
           text="Starred"
           icon={<StarredIcon />}
+          className="starredButton"
         />
       </List>
       {renderRoutes()}

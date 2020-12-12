@@ -24,23 +24,23 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-const TabPanel: FunctionComponent<Props> = ({
+const TabPanel: FunctionComponent<Props> = ( {
   id,
   displayId,
   className,
   children,
   ...otherProps
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<Props> ) => {
   const classes = useStyles();
   return (
     <Paper
       elevation={0}
       square
       hidden={id !== displayId}
-      className={clsx(classes.root, className)}
+      className={clsx( classes.root, className )}
       {...otherProps}
     >
-      {id === displayId && <Box>{children}</Box>}
+      {id === displayId && <Box className={`inputBoxes${displayId}`}>{children}</Box>}
     </Paper>
   );
 };
