@@ -11,8 +11,22 @@ export interface CoinsResponse extends ServerResponse {
   data?: number;
 }
 
+export interface PropertyResponse extends ServerResponse {
+  data?: {
+    coins?: number;
+    paperCraneStyles: {
+      value: string;
+      name: string;
+    }[];
+  };
+}
+
 export const fetchNumCoins = async () => {
-  return await axios.get<CoinsResponse>("/api/property/items/coins");
+  return axios.get<CoinsResponse>("/api/property/items/coins");
+};
+
+export const fetchUserProperty = async () => {
+  return axios.get<PropertyResponse>("/api/property/items");
 };
 
 export const loadStoreContents = () => {
