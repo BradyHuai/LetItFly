@@ -57,6 +57,11 @@ const PaperCraneSpaceFrame: FunctionComponent<Props> = ({
           icon={<InboxIcon />}
         />
         <ListIconItem
+          onClick={() => navigateToLocation("/my/space/unread")}
+          text="Unread"
+          icon={<InboxIcon />}
+        />
+        <ListIconItem
           onClick={() => navigateToLocation("/my/space/sent")}
           text="Sent"
           icon={<SendIcon />}
