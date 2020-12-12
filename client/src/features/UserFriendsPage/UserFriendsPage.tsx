@@ -24,16 +24,19 @@ interface OwnProps {}
 
 type Props = OwnProps;
 
-const UserFriendsPage: FunctionComponent<Props> = ( props ) => {
+const UserFriendsPage: FunctionComponent<Props> = (props) => {
   const classes = useStyles();
 
   return (
     <>
       <FriendsTour />
-      <FeatureContainerWithHeader headerTitle="Friends" className={classes.root}>
+      <FeatureContainerWithHeader
+        headerTitle="Friends"
+        className={classes.root}
+      >
         <InfiniteScrollList hasMore={false} loadMore={() => {}}>
           <ListItem button>
-            <ListItemAvatar >
+            <ListItemAvatar>
               <Avatar>
                 <FriendIcon className={"friendInfo"} />
               </Avatar>

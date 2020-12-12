@@ -68,7 +68,7 @@ export const loadStoreContents = () => {
   axios
     .get(url)
     .then((result) => {
-      console.log(result)
+      console.log(result);
       if ("data" in result.data) {
         response = {
           success: result.data.success,

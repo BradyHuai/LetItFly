@@ -26,7 +26,7 @@ interface OwnProps {}
 
 type Props = OwnProps;
 
-const PaperCraneCompose: FunctionComponent<Props> = ( props ) => {
+const PaperCraneCompose: FunctionComponent<Props> = (props) => {
   const classes = useStyles();
   const [paperCraneStyles, setPaperCraneStyles] = useState<
     { value: string; name: string }[]
@@ -84,7 +84,7 @@ const PaperCraneCompose: FunctionComponent<Props> = ( props ) => {
           label="Title"
           value={title}
           variant="outlined"
-          className={clsx( classes.formField, "composeTitle" )}
+          className={clsx(classes.formField, "composeTitle")}
           onChange={(event) => setTitle(event.target.value)}
           required
           fullWidth
@@ -93,7 +93,7 @@ const PaperCraneCompose: FunctionComponent<Props> = ( props ) => {
           label="Content"
           value={content}
           variant="outlined"
-          className={clsx( classes.formField, "composeContent" )}
+          className={clsx(classes.formField, "composeContent")}
           onChange={(event) => setContent(event.target.value)}
           required
           fullWidth

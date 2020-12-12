@@ -21,7 +21,7 @@ import { blueTheme, redTheme } from "./components/list/list.style";
 import { ListIconItem } from "./components/list/ListIconItem";
 import { useHistory } from "../../../hooks/useHistory";
 import clsx from "clsx";
-import InboxComposeTour from "../../Onboarding/components/InboxComposeTour"
+import InboxComposeTour from "../../Onboarding/components/InboxComposeTour";
 
 interface OwnProps {
   routes?: RouteEntry[];
@@ -51,7 +51,10 @@ const PaperCraneSpaceFrame: FunctionComponent<Props> = ({
         >
           Compose
         </ListButtonWithTheme>
-        <ListButtonWithTheme theme={blueTheme} className={clsx(classes.listItem, "searchButton")}>
+        <ListButtonWithTheme
+          theme={blueTheme}
+          className={clsx(classes.listItem, "searchButton")}
+        >
           Search
         </ListButtonWithTheme>
         <ListIconItem

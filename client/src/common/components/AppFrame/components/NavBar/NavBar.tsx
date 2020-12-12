@@ -9,7 +9,6 @@ import { useStyles } from "./NavBar.style";
 import clsx from "clsx";
 import { UserToolBar } from "../UserToolBar/UserToolBar";
 
-
 interface OwnProps {
   onMenuItemClick?: () => void;
   className?: string;

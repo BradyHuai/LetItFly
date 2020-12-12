@@ -57,10 +57,18 @@ const EmailStyledListItem: FunctionComponent<Props> = ({
         })}
       />
       <ListItemSecondaryAction>
-        <IconButton edge="end" onClick={handleDeleteClick} className="starButton">
+        <IconButton
+          edge="end"
+          onClick={handleDeleteClick}
+          className="starButton"
+        >
           <StarIcon className={clsx({ [classes.starredIcon]: starred })} />
         </IconButton>
-        <IconButton edge="end" onClick={handleStarClick} className="deleteButton">
+        <IconButton
+          edge="end"
+          onClick={handleStarClick}
+          className="deleteButton"
+        >
           <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>

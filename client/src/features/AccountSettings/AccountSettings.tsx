@@ -16,7 +16,7 @@ import { ProfilePanel } from "./components/tabPanels/ProfilePanel";
 import { AuthenticationPanel } from "./components/tabPanels/AuthenticationPanel";
 import AccountSettingsTour from "../Onboarding/components/AccountSettingsTour";
 
-interface OwnProps { }
+interface OwnProps {}
 
 type Props = OwnProps;
 
@@ -44,41 +44,47 @@ const AccountSettings: FunctionComponent<Props> = (props) => {
     setDisplayId(nextIndex);
   };
 
-  return (<>
-    <AccountSettingsTour />
-    <FeatureContainer fullHeight className={classes.root}>
-      <Container>
-        <AvatarButton className={classes.avatarButton} avatarSrc="" />
-        <TabsContainer
-          tabLabels={accountSettingsTabLabels}
-          selectedIndex={displayId}
-          onTabChange={handleTabChange}
-          className={classes.tabsContainer}
-        >
-          <TabPanel
-            id={AccountSettingsTabId.personalInfo}
-            displayId={displayId}
+  return (
+    <>
+      <AccountSettingsTour />
+      <FeatureContainer fullHeight className={classes.root}>
+        <Container>
+          <AvatarButton className={classes.avatarButton} avatarSrc="" />
+          <TabsContainer
+            tabLabels={accountSettingsTabLabels}
+            selectedIndex={displayId}
+            onTabChange={handleTabChange}
+            className={classes.tabsContainer}
           >
-            <PersonalInfoPanel />
-          </TabPanel>
-          <TabPanel id={AccountSettingsTabId.contactInfo} displayId={displayId}>
-            <ContactInfoPanel />
-          </TabPanel>
-          <TabPanel id={AccountSettingsTabId.profileData} displayId={displayId}>
-            <ProfilePanel />
-          </TabPanel>
-          <TabPanel
-            id={AccountSettingsTabId.authentication}
-            displayId={displayId}
-          >
-            <AuthenticationPanel />
-          </TabPanel>
-        </TabsContainer>
-      </Container>
-    </FeatureContainer>
-  </>
+            <TabPanel
+              id={AccountSettingsTabId.personalInfo}
+              displayId={displayId}
+            >
+              <PersonalInfoPanel />
+            </TabPanel>
+            <TabPanel
+              id={AccountSettingsTabId.contactInfo}
+              displayId={displayId}
+            >
+              <ContactInfoPanel />
+            </TabPanel>
+            <TabPanel
+              id={AccountSettingsTabId.profileData}
+              displayId={displayId}
+            >
+              <ProfilePanel />
+            </TabPanel>
+            <TabPanel
+              id={AccountSettingsTabId.authentication}
+              displayId={displayId}
+            >
+              <AuthenticationPanel />
+            </TabPanel>
+          </TabsContainer>
+        </Container>
+      </FeatureContainer>
+    </>
   );
-
 };
 
 export { AccountSettings };

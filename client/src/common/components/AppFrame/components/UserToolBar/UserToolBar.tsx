@@ -24,12 +24,15 @@ import {
   AccountCircleTwoTone as AccountIcon,
   Notifications as NotificationsIcon,
   PowerSettingsNewTwoTone as SignOutIcon,
-  HelpOutlineTwoTone as OnboardingIcon
+  HelpOutlineTwoTone as OnboardingIcon,
 } from "@material-ui/icons";
 import { useStyles } from "./UserToolBar.style";
 import { useHistory } from "../../../../../hooks/useHistory";
 import { signOutAsync } from "../../../../../features/authentication";
-import { setOnboardingActive, setReload } from "../../../../../features/Onboarding/onboardingSlice";
+import {
+  setOnboardingActive,
+  setReload,
+} from "../../../../../features/Onboarding/onboardingSlice";
 import { UserRole } from "../../../../../services/serverApi";
 
 import { CoinsContainer } from "./CoinsContainer";
@@ -77,16 +80,15 @@ const UserToolBar: FunctionComponent<Props> = (props) => {
     dispatch(setReload());
   };
 
-
   return (
     <div className={classes.root}>
-      {currentUserRole === UserRole.user ?
+      {currentUserRole === UserRole.user ? (
         <IconButton color="inherit" onClick={handleSwitchOnboarding}>
-
           <OnboardingIcon />
-
         </IconButton>
-        : (<></>)}
+      ) : (
+        <></>
+      )}
 
       <CoinsContainer />
       <IconButton color="inherit">

@@ -18,23 +18,23 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-const FormControlButtons: FunctionComponent<Props> = ( {
+const FormControlButtons: FunctionComponent<Props> = ({
   primaryText,
   secondaryText,
   handlePrimaryButtonClick,
   handleSecondaryButtonClick,
   className,
   ...otherProps
-} ) => {
+}) => {
   const classes = useStyles();
 
   return (
-    <div className={clsx( className, classes.root )} {...otherProps}>
+    <div className={clsx(className, classes.root)} {...otherProps}>
       <Button
         variant="contained"
         color="primary"
         onClick={handlePrimaryButtonClick}
-        className={clsx( classes.button, "sendButton" )}
+        className={clsx(classes.button, "sendButton")}
       >
         {primaryText}
       </Button>
