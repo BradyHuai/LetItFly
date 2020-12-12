@@ -9,7 +9,6 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: theme.settings.sideBarWidth,
-      zIndex: 10,
     },
     expandedSideBar: {
       width: theme.settings.sideBarWidth,
