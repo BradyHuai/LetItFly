@@ -11,3 +11,4 @@ export * from "./AccountSettings";
 export * from "./PaperCraneSpace";
 export * from "./AdminHome";
 export * from "./UserStore";
+export * from "./GuestLanding";
