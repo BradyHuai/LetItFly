@@ -43,13 +43,13 @@ export default function GuestPage() {
     } else {
       (async () => {
         const url = "/api/users/roles/upgrade";
-  
+
         const upgrade_request = await axios({
           method: "post",
           url: url,
           data: { firstName: name.fname, lastName: name.lname },
         });
-    
+
         if (upgrade_request.success === true) {
           history.push("/guesttut");
         } else {
