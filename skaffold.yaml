@@ -3,16 +3,44 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s/*
+      - ./infra/k8s-dev/*
 build:
   local:
     push: false
   artifacts:
-    - image: lanyanxi/client
-      context: client
+    #    - image: lanyanxi/client
+    #      context: client
+    #      docker:
+    #        dockerfile: Dockerfile
+    #      sync:
+    #        manual:
+    #          - src: "src/**/*.js"
+    #            dest: .
+    - image: lanyanxi/auth
+      context: auth
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "src/**/*.js"
+          - src: 'src/**/*.ts'
             dest: .
+    - image: lanyanxi/profile
+      context: profile
+      docker:
+        dockerfile: Dockerfile
+    - image: lanyanxi/friends
+      context: friends
+      docker:
+        dockerfile: Dockerfile
+    - image: lanyanxi/property
+      context: property
+      docker:
+        dockerfile: Dockerfile
+    - image: lanyanxi/user-activities
+      context: user-activities
+      docker:
+        dockerfile: Dockerfile
+    - image: lanyanxi/paper-cranes
+      context: paper-cranes
+      docker:
+        dockerfile: Dockerfile

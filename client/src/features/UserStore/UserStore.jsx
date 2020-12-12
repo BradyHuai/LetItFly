@@ -1,7 +1,7 @@
 import React from "react";
 import UserStoreItem from "./UserStoreItem";
-import { loadStoreContents } from "../../services/serverApi/userStoreApi";
 import StoreTour from "../Onboarding/components/StoreTour";
+import { loadStoreContents } from "../../services/serverApi/propertyApi";
 
 const userStore = () => {
   return (

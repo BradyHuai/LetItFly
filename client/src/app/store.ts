@@ -21,9 +21,11 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage/session";
 
-import userAuthReducer from "../features/authentication/userAuthSlice";
-import appFrameReducer from "../common/components/AppFrame/appFrameSlice";
 import onboardingReducer from "../features/Onboarding/onboardingSlice";
+import userAuthReducer from "./redux/userAuthSlice";
+import userProfileReducer from "./redux/userProfileSlice";
+import userPropertyReducer from "./redux/userPropertySlice";
+import appFrameReducer from "./redux/appFrameSlice";
 
 const persistedAuthReducer = persistReducer(
   {
@@ -31,6 +33,20 @@ const persistedAuthReducer = persistReducer(
     storage,
   },
   userAuthReducer
+);
+const persistedProfileReducer = persistReducer(
+  {
+    key: "root",
+    storage,
+  },
+  userProfileReducer
+);
+const persistedPropertyReducer = persistReducer(
+  {
+    key: "root",
+    storage,
+  },
+  userPropertyReducer
 );
 
 const persistedAppFrameReducer = persistReducer(
@@ -44,6 +60,8 @@ const persistedAppFrameReducer = persistReducer(
 const reducers = combineReducers({
   userAuth: persistedAuthReducer,
   appFrame: persistedAppFrameReducer,
+  userProfile: persistedProfileReducer,
+  userProperty: persistedPropertyReducer,
   onboarding: onboardingReducer,
 });
 
