@@ -5,6 +5,7 @@ import {
   PaperCraneInfo,
 } from "../../../services/serverApi";
 import { AxiosResponse } from "axios";
+import { clearLine } from "readline";
 
 /**
  * Created by Jimmy Lan
@@ -12,9 +13,14 @@ import { AxiosResponse } from "axios";
  */
 export const usePaperCraneList = (
   fetchCategory: "received" | "sent" | "starred"
-): [PaperCraneInfo[], boolean, () => Promise<void>] => {
+): [PaperCraneInfo[], boolean, () => Promise<void>, () => void] => {
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [list, setList] = useState<PaperCraneInfo[]>([]);
+
+  const clearList = () => {
+    setList([]);
+    setHasMore(true);
+  };
 
   const fetchNextData = async () => {
     const fetchCount = 10;
@@ -44,5 +50,5 @@ export const usePaperCraneList = (
     }
   };
 
-  return [list, hasMore, fetchNextData];
+  return [list, hasMore, fetchNextData, clearList];
 };

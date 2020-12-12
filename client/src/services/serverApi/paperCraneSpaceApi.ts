@@ -56,7 +56,7 @@ export const fetchPaperCrane = (id: string) => {
 
 export const markPaperCrane = (
   id: string,
-  markings: { isUnread: boolean; isStarred: boolean }
+  markings: { isUnread?: boolean; isStarred?: boolean }
 ) => {
   return axios.patch("/api/paper-cranes/" + id + "/marking", markings);
 };
