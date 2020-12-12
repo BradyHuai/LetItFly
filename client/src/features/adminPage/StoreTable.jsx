@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "./table";
-import axios from "../../services/axios";
+import {axios} from "../../services/axios";
 
 const loadStoreTable = () => {
   return axios.get("/api/property/inventory").then((res) => {
