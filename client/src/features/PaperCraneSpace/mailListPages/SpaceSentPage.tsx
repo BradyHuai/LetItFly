@@ -47,7 +47,7 @@ const SpaceSentPage: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <FeatureContainerWithHeader headerTitle="Sent">
+    <FeatureContainerWithHeader headerTitle="Sent" className="sentContent">
       <InfiniteScrollList
         hasMore={hasMore}
         loadMore={fetchNextData}

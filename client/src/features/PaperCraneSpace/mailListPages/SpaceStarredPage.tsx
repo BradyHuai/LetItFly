@@ -49,7 +49,10 @@ const SpaceStarredPage: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <FeatureContainerWithHeader headerTitle="Starred">
+    <FeatureContainerWithHeader
+      headerTitle="Starred"
+      className="starredContent"
+    >
       <InfiniteScrollList
         hasMore={hasMore}
         loadMore={fetchNextData}

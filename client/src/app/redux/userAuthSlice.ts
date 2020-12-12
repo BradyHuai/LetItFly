@@ -118,17 +118,6 @@ export const authenticateAsync = (
   password: string,
   authFunc: typeof signInRequest | typeof signUpRequest
 ): AppThunk => async (dispatch) => {
-  dispatch(
-    authenticate({
-      id: "fkjewofaf",
-      email: "user@user.com",
-      firstName: "Jimmy",
-      lastName: "Lan",
-      role: UserRole.user,
-    })
-  );
-  return;
-
   let response: AxiosResponse<AuthResponse>;
   try {
     response = await authFunc(email, password);

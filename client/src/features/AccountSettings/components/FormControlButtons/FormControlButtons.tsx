@@ -34,7 +34,7 @@ const FormControlButtons: FunctionComponent<Props> = ({
         variant="contained"
         color="primary"
         onClick={handlePrimaryButtonClick}
-        className={classes.button}
+        className={clsx(classes.button, "sendButton")}
       >
         {primaryText}
       </Button>

@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./PaperCraneCompose.style";
 import { FormControlButtons } from "../../AccountSettings/components/FormControlButtons/FormControlButtons";
+import clsx from "clsx";
 import { AxiosResponse } from "axios";
 import {
   fetchUserProperty,
@@ -83,7 +84,7 @@ const PaperCraneCompose: FunctionComponent<Props> = (props) => {
           label="Title"
           value={title}
           variant="outlined"
-          className={classes.formField}
+          className={clsx(classes.formField, "composeTitle")}
           onChange={(event) => setTitle(event.target.value)}
           required
           fullWidth
@@ -92,7 +93,7 @@ const PaperCraneCompose: FunctionComponent<Props> = (props) => {
           label="Content"
           value={content}
           variant="outlined"
-          className={classes.formField}
+          className={clsx(classes.formField, "composeContent")}
           onChange={(event) => setContent(event.target.value)}
           required
           fullWidth

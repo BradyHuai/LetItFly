@@ -54,7 +54,7 @@ const TabsContainer: FunctionComponent<Props> = ({
       >
         {tabLabels.map((tabLabel: string, index: number) => (
           <Tab
-            className={classes.tab}
+            className={clsx(classes.tab, `panel${index}`)}
             label={tabLabel}
             value={index}
             key={tabLabel}

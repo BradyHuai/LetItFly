@@ -40,7 +40,9 @@ const TabPanel: FunctionComponent<Props> = ({
       className={clsx(classes.root, className)}
       {...otherProps}
     >
-      {id === displayId && <Box>{children}</Box>}
+      {id === displayId && (
+        <Box className={`inputBoxes${displayId}`}>{children}</Box>
+      )}
     </Paper>
   );
 };
