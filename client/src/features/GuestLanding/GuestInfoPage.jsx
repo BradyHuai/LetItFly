@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { AuthPageContainer } from "../authentication/components/AuthPageContainer";
 import { GrayOutArea } from "../authentication/components/GridImageCard";
 import { useHistory } from "../../hooks/useHistory";
+import axios from "../../services/axios";
 
 const useStyles = makeStyles((theme) => ({
   nameForm: {
@@ -40,7 +41,23 @@ export default function GuestPage() {
     if (name.fname === "" || name.lname === "") {
       alert("Invalid name");
     } else {
-      history.push("/guesttut");
+      (async () => {
+        const url = "/api/users/roles/upgrade";
+  
+        const upgrade_request = await axios({
+          method: "post",
+          url: url,
+          data: { firstName: name.fname, lastName: name.lname },
+        });
+    
+        if (upgrade_request.success === true) {
+          history.push("/guesttut");
+        } else {
+        }
+      })().catch((e) => {
+        alert("Invalid input, please check your inputs.");
+        console.log(e);
+      });
     }
   };
 

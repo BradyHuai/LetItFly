@@ -30,6 +30,7 @@ import {
 } from "../features/adminPage";
 import { PaperCraneCompose } from "../features/PaperCraneSpace/PaperCraneCompose";
 import { UserFriendsPage } from "../features/UserFriendsPage";
+import { Chart } from "../features/adminPage/Chart";
 
 export const userRoutes: RouteEntry[] = [
   {
@@ -117,6 +118,12 @@ export const userRoutes: RouteEntry[] = [
       {
         path: "/my/cranes-table",
         Component: PaperCraneTable,
+        exact: true,
+        isProtected: [UserRole.admin],
+      },
+      {
+        path: "/my/dashboard",
+        Component: Chart,
         exact: true,
         isProtected: [UserRole.admin],
       },
