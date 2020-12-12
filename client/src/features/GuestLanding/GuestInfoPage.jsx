@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import { AuthPageContainer } from "../authentication/components/AuthPageContainer";
 import { GrayOutArea } from "../authentication/components/GridImageCard";
 import { useHistory } from "../../hooks/useHistory";
-import axios from "../../services/axios";
+import {axios} from "../../services/axios";
 
 const useStyles = makeStyles((theme) => ({
   nameForm: {
@@ -55,7 +55,7 @@ export default function GuestPage() {
         } else {
         }
       })().catch((e) => {
-        alert("Invalid input, please check your inputs.");
+        alert("Sorry, can't process your requests.");
         console.log(e);
       });
     }
