@@ -14,8 +14,13 @@ import * as routes from "./routes";
 
 const app = express();
 
-// @ts-ignore
-app.use(cors({ origin: true, credentials: true }));
+app.use(
+  // @ts-ignore
+  cors({
+    origin: ["http://localhost:3000", "https://letitfly.net"],
+    credentials: true,
+  })
+);
 
 // Other
 app.set("trust proxy", true);
@@ -23,7 +28,7 @@ app.use(json());
 app.use(
   cookieSession({
     signed: false,
-    secure: process.env.NODE_ENV !== "test",
+    secure: false,
   })
 );
 

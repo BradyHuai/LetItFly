@@ -17,6 +17,7 @@ Please find a menu of documentation here: [Documentation Menu](/docs)/.
 ## Marking Guide for TA and Professor
 
 - [Phase 1](/docs/marking/phase1.md)
+- [Phase 2](/docs/marking/phase2.md)
 
 ## Project Setup
 

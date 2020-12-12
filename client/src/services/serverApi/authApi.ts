@@ -26,7 +26,11 @@ export interface AuthResponse extends ServerResponse {
  * @param password user password
  */
 export const signIn = (email: string, password: string) => {
-  return axios.post<AuthResponse>("/api/users/signin", { email, password });
+  return axios.post<AuthResponse>(
+    "/api/users/signin",
+    { email, password },
+    { withCredentials: true }
+  );
 };
 
 /**
