@@ -40,8 +40,8 @@ export class PaperCraneConnectMsgReceiver extends MsgReceiver<PaperCraneUserConn
       throw new Error(`User ${userId2} is not found!`);
     }
 
-    const userRelation1 = await Friend.findOne({ user: user1.id });
-    const userRelation2 = await Friend.findOne({ user: user2.id });
+    const userRelation1 = await Friend.findOne({ user: user1.id! });
+    const userRelation2 = await Friend.findOne({ user: user2.id! });
 
     if (!userRelation1 || !userRelation2) {
       throw new Error("User relation for corresponding users not found!");

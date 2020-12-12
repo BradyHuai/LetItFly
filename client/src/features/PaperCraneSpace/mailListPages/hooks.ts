@@ -4,6 +4,8 @@ import {
   MultiplePaperCraneResponse,
   PaperCraneInfo,
 } from "../../../services/serverApi";
+import { AxiosResponse } from "axios";
+import { clearLine } from "readline";
 
 /**
  * Created by Jimmy Lan
@@ -11,28 +13,42 @@ import {
  */
 export const usePaperCraneList = (
   fetchCategory: "received" | "sent" | "starred"
-): [PaperCraneInfo[], boolean, () => Promise<void>] => {
+): [PaperCraneInfo[], boolean, () => Promise<void>, () => void] => {
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [list, setList] = useState<PaperCraneInfo[]>([]);
+
+  const clearList = () => {
+    setList([]);
+    setHasMore(true);
+  };
 
   const fetchNextData = async () => {
     const fetchCount = 10;
 
-    const response: MultiplePaperCraneResponse = await fetchPaperCraneListShallow(
-      fetchCount,
-      list.length,
-      fetchCategory
-    );
+    let response: AxiosResponse<MultiplePaperCraneResponse>;
 
-    // TODO check for failure
+    try {
+      response = await fetchPaperCraneListShallow(
+        fetchCount,
+        list.length,
+        fetchCategory
+      );
+    } catch (error) {
+      alert("Sorry, the paper crane service is currently unavailable.");
+      console.log(error);
+      setHasMore(false);
+      return;
+    }
 
-    setList((prevState: PaperCraneInfo[]) => prevState.concat(response.data!));
+    const body = response.data;
 
-    if (!response.data?.length || response.data?.length < fetchCount) {
+    setList((prevState: PaperCraneInfo[]) => prevState.concat(body.data!));
+
+    if (!body.data?.length || body.data?.length < fetchCount) {
       setHasMore(false);
       return;
     }
   };
 
-  return [list, hasMore, fetchNextData];
+  return [list, hasMore, fetchNextData, clearList];
 };

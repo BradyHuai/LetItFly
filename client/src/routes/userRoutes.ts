@@ -12,12 +12,15 @@ import { UserRole } from "../services/serverApi";
 import {
   AccountSettings,
   AdminHome,
+  PaperCraneRead,
   PaperCraneSpaceFrame,
   SpaceInboxPage,
   SpaceSentPage,
   SpaceStarredPage,
   UserHome,
   UserStore,
+  GuestInfoPage,
+  GuestTutorial,
 } from "../features";
 
 import {
@@ -32,6 +35,16 @@ import { Chart } from "../features/adminPage/Chart";
 
 export const userRoutes: RouteEntry[] = [
   {
+    path: "/guest",
+    Component: GuestInfoPage,
+    exact: true,
+  },
+  {
+    path: "/guesttut",
+    Component: GuestTutorial,
+    exact: true,
+  },
+  {
     path: "/my",
     Component: AppFrame,
     isProtected: [UserRole.user, UserRole.admin],
@@ -42,6 +55,7 @@ export const userRoutes: RouteEntry[] = [
         exact: true,
         isProtected: [UserRole.user],
       },
+
       {
         path: "/my/account",
         Component: AccountSettings,
@@ -66,6 +80,10 @@ export const userRoutes: RouteEntry[] = [
           {
             path: "/my/space/compose",
             Component: PaperCraneCompose,
+          },
+          {
+            path: "/my/space/read/:id",
+            Component: PaperCraneRead,
           },
         ],
       },

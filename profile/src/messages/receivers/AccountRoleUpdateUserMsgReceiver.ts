@@ -41,7 +41,7 @@ export class AccountRoleUpdateUserMsgReceiver extends MsgReceiver<AccountRoleUpd
       firstName: user.personal.name.first,
       lastName: user.personal.name.last,
       avatar: user.avatar,
-      id: user.id,
+      id: user.id!,
       __v: user.__v,
     });
 
