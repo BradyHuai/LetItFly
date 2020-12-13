@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { RoseChart } from "bizcharts";
 export default function Chart1({ getData }) {
   const { useState } = React;
@@ -12,8 +12,6 @@ export default function Chart1({ getData }) {
       })();
     }
   }, [getData]);
-
-  const ref = useRef();
 
   return (
     <RoseChart

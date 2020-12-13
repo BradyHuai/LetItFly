@@ -50,9 +50,11 @@ export default function GuestPage() {
           data: { firstName: name.fname, lastName: name.lname },
         });
 
-        if (upgrade_request.success === true) {
+        console.log(upgrade_request)
+        if (upgrade_request.data.success) {
           history.push("/guesttut");
         } else {
+          alert(upgrade_request.data.errors[0].message);
         }
       })().catch((e) => {
         alert("Sorry, can't process your requests.");

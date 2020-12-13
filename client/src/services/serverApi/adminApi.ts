@@ -1,6 +1,5 @@
 import { getFakeServerCall } from "./helpers";
 import { ServerResponse } from "./models";
-import axios from "axios";
 
 // export const loadUsersTable = () => {
 //   const body: = axios.get("/aaaa", ).then(

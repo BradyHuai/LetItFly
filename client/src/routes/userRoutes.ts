@@ -38,11 +38,13 @@ export const userRoutes: RouteEntry[] = [
     path: "/guest",
     Component: GuestInfoPage,
     exact: true,
+    isProtected: [UserRole.guest],
   },
   {
     path: "/guesttut",
     Component: GuestTutorial,
     exact: true,
+    isProtected: [UserRole.user, UserRole.guest],
   },
   {
     path: "/my",

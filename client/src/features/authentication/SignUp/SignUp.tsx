@@ -107,7 +107,7 @@ const SignUp: FunctionComponent<Props> = (props) => {
 
     console.log("push");
 
-    history.push(state?.from || "/my");
+    history.push(state?.from || "/guest");
   };
 
   const handleSignInClick = () => {
