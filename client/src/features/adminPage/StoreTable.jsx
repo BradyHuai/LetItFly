@@ -4,8 +4,8 @@ import { axios } from "../../services/axios";
 
 const loadStoreTable = () => {
   return axios.get("/api/property/inventory").then((res) => {
-    if (res.data.success){
-    const { body } = res.data.data;
+    if (res.data.success) {
+      const { body } = res.data.data;
       return {
         data: body.map((item) => {
           return {
@@ -17,8 +17,7 @@ const loadStoreTable = () => {
           };
         }),
       };
-    }
-    else{
+    } else {
       return [];
     }
   });

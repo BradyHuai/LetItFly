@@ -4,7 +4,7 @@ import { axios } from "../../services";
 
 const loadUserTable = () => {
   return axios.get("/api/profiles").then((res) => {
-    if(res.data.success){
+    if (res.data.success) {
       return {
         data: res.data.body.map((person) => {
           return {
@@ -22,8 +22,7 @@ const loadUserTable = () => {
           };
         }),
       };
-    }
-    else {
+    } else {
       return [];
     }
   });

@@ -4,8 +4,7 @@ import { axios } from "../../services/axios";
 
 const loadPaperCraneTable = () => {
   return axios.get("/api/paper-cranes").then((res) => {
-
-    if (res.data.success){
+    if (res.data.success) {
       const { body } = res.data.data;
       return {
         data: body.map((paper) => {
@@ -18,8 +17,7 @@ const loadPaperCraneTable = () => {
           };
         }),
       };
-    }
-    else{
+    } else {
       return [];
     }
   });
