@@ -50,7 +50,7 @@ export default function GuestPage() {
           data: { firstName: name.fname, lastName: name.lname },
         });
 
-        console.log(upgrade_request)
+        console.log(upgrade_request);
         if (upgrade_request.data.success) {
           history.push("/guesttut");
         } else {
