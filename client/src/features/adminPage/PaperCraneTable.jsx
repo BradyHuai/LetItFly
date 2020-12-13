@@ -4,18 +4,24 @@ import { axios } from "../../services/axios";
 
 const loadPaperCraneTable = () => {
   return axios.get("/api/paper-cranes").then((res) => {
-    const { body } = res.data;
-    return {
-      data: body.map((paper) => {
-        return {
-          ...paper,
-          title: paper.title,
-          style: paper.style,
-          content: paper.content,
-          from: paper.senderId,
-        };
-      }),
-    };
+
+    if (res.data.success){
+      const { body } = res.data.data;
+      return {
+        data: body.map((paper) => {
+          return {
+            ...paper,
+            title: paper.title,
+            style: paper.style,
+            content: paper.content,
+            from: paper.senderId,
+          };
+        }),
+      };
+    }
+    else{
+      return [];
+    }
   });
 };
 
