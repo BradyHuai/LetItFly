@@ -64,7 +64,7 @@ export const fetchUserProperty = async () => {
 
 export const loadStoreContents = () => {
   let response: ServerResponse;
-  const url = "/api/users/property/inventory";
+  const url = "/api/property/inventory";
   axios
     .get(url)
     .then((result) => {
