@@ -4,18 +4,22 @@ import { axios } from "../../services/axios";
 
 const loadStoreTable = () => {
   return axios.get("/api/property/inventory").then((res) => {
-    const { body } = res.data;
-    return {
-      data: body.map((person) => {
-        return {
-          ...person,
-          name: person.name,
-          description: person.description,
-          price: person.price,
-          category: person.category,
-        };
-      }),
-    };
+    if (res.data.success) {
+      const { body } = res.data.data;
+      return {
+        data: body.map((item) => {
+          return {
+            ...item,
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            category: item.category,
+          };
+        }),
+      };
+    } else {
+      return [];
+    }
   });
 };
 
