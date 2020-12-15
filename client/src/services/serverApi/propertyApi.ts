@@ -62,25 +62,26 @@ export const fetchUserProperty = async () => {
 //   return getFakeServerCall(response, 0.5);
 // };
 
-export const loadStoreContents = () => {
-  let response: ServerResponse;
+export const loadStoreContents = async () => {
   const url = "/api/property/inventory";
-  axios
-    .get(url)
-    .then((result) => {
-      console.log(result);
-      if ("data" in result.data) {
-        response = {
-          success: result.data.success,
-          data: result.data.data,
-        };
-      } else if ("error" in result.data) {
-        console.log(result.data.error);
-      }
+  const result = await axios.get(url);
+  return result;
 
-      return getFakeServerCall(response, 0.5);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+  // console.log(result);
+  // if ("data" in result.data) {
+  //   response = {
+  //     success: result.data.success,
+  //     data: result.data.data,
+  //   };
+  //   console.log(response);
+  //   return getFakeServerCall(response, 0.5);
+  // } else if ("error" in result.data) {
+  //   response = {
+  //     success: result.data.success,
+  //     data: [
+  //     ],
+  //   };
+  //   console.log(response);
+  //   return getFakeServerCall(response, 0.5);
+  // }
 };

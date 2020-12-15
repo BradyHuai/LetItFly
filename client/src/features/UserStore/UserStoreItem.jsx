@@ -11,9 +11,17 @@ export default function UserStoreItem({ getData }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getData()
+    const store_data = getData();
+    console.log(store_data);
+    store_data
+
       .then((response) => {
-        setData(response.data);
+        console.log(response);
+        if ("data" in response.data) {
+          setData(response.data.data);
+        } else {
+          setData([]);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -22,7 +30,7 @@ export default function UserStoreItem({ getData }) {
 
   const classes = myStyles();
 
-  if (!data.length) return <span>loading...</span>;
+  if (!data.length) return <span>No items in the store...</span>;
 
   return data.map((entry) => (
     <Paper elevation={2} className={classes.paper} key={entry.itemName}>
