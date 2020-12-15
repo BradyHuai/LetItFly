@@ -4,24 +4,27 @@ import { axios } from "../../services";
 
 const loadUserTable = () => {
   return axios.get("/api/profiles").then((res) => {
-    const { body } = res.data;
-    return {
-      data: body.map((person) => {
-        return {
-          ...person,
-          lastname: person.personal.name.last,
-          contactinformation:
-            person.contact.telephone + "/n " + person.contact.socialMedia,
-          id: person.id,
-          nickname:
-            person.personal.name.last + " " + person.personal.name.first,
-          firstname: person.personal.name.first,
-          name: person.personal.name.first + " " + person.personal.name.last,
-          coins: "1000",
-          joindate: person.dateJoined.toLocaleString(),
-        };
-      }),
-    };
+    if (res.data.success) {
+      return {
+        data: res.data.body.map((person) => {
+          return {
+            ...person,
+            lastname: person.personal.name.last,
+            contactinformation:
+              person.contact.telephone + "/n " + person.contact.socialMedia,
+            id: person.id,
+            nickname:
+              person.personal.name.last + " " + person.personal.name.first,
+            firstname: person.personal.name.first,
+            name: person.personal.name.first + " " + person.personal.name.last,
+            coins: "1000",
+            joindate: person.dateJoined.toLocaleString(),
+          };
+        }),
+      };
+    } else {
+      return [];
+    }
   });
 };
 

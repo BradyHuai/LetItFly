@@ -41,7 +41,7 @@ export default function GuestTutorial() {
   const history = useHistory();
 
   const handleSubmit = (e) => {
-    history.push("/my");
+    history.push("/login");
   };
 
   return (
