@@ -42,12 +42,21 @@ export const fetchPaperCraneListShallow = (
   skip: number,
   fetchCategory: "received" | "sent" | "starred" | "unread"
 ) => {
-  return axios.get<MultiplePaperCraneResponse>(
-    "/api/paper-cranes/" + fetchCategory,
-    {
-      params: { limit, skip },
-    }
-  );
+  if (skip === 0) {
+    return axios.get<MultiplePaperCraneResponse>(
+      "/api/paper-cranes/" + fetchCategory,
+      {
+        params: { limit },
+      }
+    );
+  } else {
+    return axios.get<MultiplePaperCraneResponse>(
+      "/api/paper-cranes/" + fetchCategory,
+      {
+        params: { limit, skip },
+      }
+    );
+  }
 };
 
 export const fetchPaperCrane = (id: string) => {
