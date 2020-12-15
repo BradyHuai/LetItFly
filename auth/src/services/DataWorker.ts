@@ -65,7 +65,7 @@ export class DataWorker {
       } catch (error) {
         console.error(error);
       }
-    }, 11 * 1000);
+    }, 110 * 1000);
 
     setTimeout(async () => {
       const { firstName, lastName } = entry;
@@ -81,7 +81,7 @@ export class DataWorker {
       } catch (error) {
         console.error(error);
       }
-    }, 12 * 1000);
+    }, 120 * 1000);
   };
 
   /**

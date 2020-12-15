@@ -58,5 +58,5 @@ export const requestPassword = (email: string) => {
  * this function should not require any parameters.
  */
 export const signOut = () => {
-  return axios.post<AuthResponse>("/api/signout");
+  return axios.post<AuthResponse>("/api/users/signout");
 };
